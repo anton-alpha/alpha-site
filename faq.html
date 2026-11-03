@@ -31,6 +31,15 @@ header .wm{width:104px;height:21px;display:block}
 .nav{display:flex;gap:22px;margin-left:34px}
 .nav a{color:var(--body);text-decoration:none;font-size:14px;font-weight:500;letter-spacing:-.005em;transition:color .3s}.nav a:hover{color:#fff}
 @media (max-width:860px){.nav{display:none}}
+.burger{all:unset;display:none;cursor:pointer;width:40px;height:40px;border-radius:12px;margin-left:8px;position:relative;flex:none}
+.burger i{position:absolute;left:11px;width:18px;height:2px;border-radius:2px;background:var(--ink);transition:transform .3s,opacity .3s,top .3s}
+.burger i:nth-child(1){top:13px}.burger i:nth-child(2){top:19px}.burger i:nth-child(3){top:25px}
+.burger[aria-expanded="true"] i:nth-child(1){top:19px;transform:rotate(45deg)}.burger[aria-expanded="true"] i:nth-child(2){opacity:0}.burger[aria-expanded="true"] i:nth-child(3){top:19px;transform:rotate(-45deg)}
+.mnav{display:none;flex-direction:column;padding:6px 20px 18px;border-top:1px solid var(--line);background:rgba(5,12,10,.92)}
+.mnav a{color:var(--ink);text-decoration:none;font-size:17px;font-weight:500;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.mnav a.hi{color:var(--mint);border:0}
+.mnav.open{display:flex}
+@media (max-width:860px){.burger{display:block}header .btn.sm:not(.ghost){display:none}}
 .spacer{flex:1}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:13px 22px;font:inherit;font-weight:600;color:var(--ink);background:var(--surface-2);text-decoration:none;cursor:pointer;transition:transform .15s,background .2s;white-space:nowrap}
 .btn:hover{background:#23312C}.btn:active{transform:scale(.97)}
@@ -48,7 +57,7 @@ header .wm{width:104px;height:21px;display:block}
 .hero{position:relative;isolation:isolate;padding-block:36px 20px;min-height:88vh;display:grid;grid-template-columns:0.95fr 1.15fr;gap:24px;align-items:center}
 canvas#aur{position:absolute;top:0;left:0;width:100%;height:100vh;z-index:0;pointer-events:none;translate:0 var(--py,0)}
 header{position:sticky}main{position:relative;z-index:1}
-.hero .readout{max-width:none;font-family:var(--mono);font-size:12.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--mint);margin:0 0 22px;min-height:1.6em;white-space:pre-wrap}
+.hero .readout{max-width:none;font-family:var(--mono);font-size:12.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--mint);margin:0 0 22px;min-height:3.4em;white-space:pre-wrap}
 .hero .readout::after{content:"";display:inline-block;width:.6em;height:1em;background:var(--mint);vertical-align:-.15em;margin-left:4px;animation:blink 1s steps(2) infinite}
 @keyframes blink{50%{opacity:0}}
 .rotw{display:inline-grid;vertical-align:baseline;text-align:left}
@@ -269,7 +278,7 @@ h2{font-size:clamp(34px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-hei
 .fbrand .wm{width:104px;height:21px;display:block;margin-bottom:14px}.fbrand p{margin:0 0 10px;color:var(--ink)}.fbrand small{color:var(--muted);line-height:1.5}
 .fcol{display:grid;gap:8px}.fcol b{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mint);margin-bottom:4px}.fcol a{color:var(--body);text-decoration:none;font-size:14px}.fcol a:hover{color:#fff}
 .legal{padding:10px 20px 40px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.55}.legal p{margin:12px 0 0}.legal b{color:var(--body)}
-@media (max-width:860px){.appwrap,.trustgrid{grid-template-columns:1fr}.steps,.bizgrid,.secgrid2{grid-template-columns:1fr}.cmpnums{grid-template-columns:1fr 1fr}.fcols{grid-template-columns:1fr 1fr}.step:not(:last-child)::after{display:none}.facts>div{grid-template-columns:1fr}.phonewrap{order:-1}}
+@media (max-width:860px){.appwrap,.trustgrid{grid-template-columns:1fr}.steps,.bizgrid,.secgrid2{grid-template-columns:1fr}.cmpnums{grid-template-columns:1fr 1fr}.fcols{grid-template-columns:repeat(3,1fr);gap:20px 14px;padding:40px 20px 24px}.fbrand{grid-column:1/-1}.step:not(:last-child)::after{display:none}.facts>div{grid-template-columns:1fr}.phonewrap{order:-1}}
 /* globe */
 .globe-wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:36px;align-items:center}
 .globe-box{position:relative;aspect-ratio:1;max-width:560px;width:100%;margin:0 auto}
@@ -440,7 +449,8 @@ input[type=email]:focus{outline:2px solid var(--mint)}
 .queue .pos small{font-size:16px;color:#CFE6DC;font-weight:500;letter-spacing:0;display:block}
 .ref{display:flex;gap:8px;align-items:center;background:rgba(0,0,0,.25);border-radius:14px;padding:10px 12px}
 .ref code{font-family:var(--mono);font-size:13px;color:#fff;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-footer .wrap{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;padding-block:10px 56px;color:var(--muted);font-size:13.5px}
+footer{color:var(--muted);font-size:13.5px}
+footer .fcols{display:grid}
 footer .wm{width:80px;height:16px;background:var(--muted)}
 footer a{color:var(--muted);text-decoration:none}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:rgba(32,46,41,.95);color:#fff;padding:12px 18px;border-radius:14px;font-weight:600;z-index:60;display:none}
@@ -455,13 +465,17 @@ footer a{color:var(--muted);text-decoration:none}
   .globe-wrap,.priv,.keys,.calc,.join{grid-template-columns:1fr}
   .plans{grid-template-columns:1fr}
   section{padding-block:30px 64px}
-  .ticker{min-height:0}
+  .ticker{min-height:0;height:372px;overflow:hidden}
+  .ft span{max-height:none;opacity:1}
+  .fnode,.flow{min-width:0;max-width:100%}.fnode b.cipher{overflow-wrap:anywhere;font-size:11.5px}
+  .chain{height:30px}.chain i{width:30px;height:24px;font-size:8px}.lchain i,.lpend{height:30px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 <style>.sub main{padding-top:40px;min-height:70vh}.sub section{padding-top:20px}body::after{display:none}</style>
 </head><body class="sub">
-<header><div class="wrap"><a href="index.html" class="wm" role="img" aria-label="Alpha"></a><nav class="nav" aria-label="Sections"><a href="index.html#app-s">Product</a><a href="index.html#biz-s">Business</a><a href="index.html#sec-s">Security</a><a href="faq.html">FAQ</a><a href="careers.html">Careers</a></nav><span class="spacer"></span><a class="btn sm ghost" href="https://app.alpha.com.ky/" rel="noopener">Log in</a><a class="btn sm" href="index.html#join">Join the waitlist</a></div></header>
+<header><div class="wrap"><a href="index.html" class="wm" role="img" aria-label="Alpha"></a><nav class="nav" aria-label="Sections"><a href="index.html#app-s">Product</a><a href="index.html#biz-s">Business</a><a href="index.html#sec-s">Security</a><a href="faq.html">FAQ</a><a href="careers.html">Careers</a></nav><span class="spacer"></span><a class="btn sm ghost" href="https://app.alpha.com.ky/" rel="noopener">Log in</a><a class="btn sm" href="index.html#join">Join the waitlist</a><button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button></div>
+<div class="mnav" id="mnav"><a href="index.html#app-s">Product</a><a href="index.html#biz-s">Business</a><a href="index.html#sec-s">Security</a><a href="faq.html">FAQ</a><a href="careers.html">Careers</a><a href="https://app.alpha.com.ky/" rel="noopener">Log in</a><a href="index.html#join" class="hi">Join the waitlist</a></div></header>
 <main class="wrap" id="top">
  <section id="faq-s">
   <span class="eb rv">Questions</span>
@@ -492,6 +506,7 @@ footer a{color:var(--muted);text-decoration:none}
 <p><b>Privacy.</b> This site stores nothing about you beyond the email address you give us for the waitlist, which we use only to tell you when Alpha opens and to run the referral programme. It is not sold or shared. To remove it, email hello@alpha.com.ky. No analytics or advertising trackers run on this page.</p>
 <p>© Alpha Corp. Alpha and the Alpha wordmark are trademarks of Alpha Corp.</p></div></footer>
 <script>
+(function(){var b=document.getElementById('burger'),m=document.getElementById('mnav');if(b){b.addEventListener('click',function(){var o=!m.classList.contains('open');m.classList.toggle('open',o);b.setAttribute('aria-expanded',o)})}})();
 (function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
 document.querySelectorAll('.rv').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight)el.classList.add('in')})})();
 </script>
