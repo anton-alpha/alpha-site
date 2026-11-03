@@ -465,10 +465,28 @@ h2.rv{transition-duration:1.1s}
 .join::before{content:"";position:absolute;inset:-40%;z-index:-1;background:radial-gradient(35% 40% at 80% 20%,rgba(98,224,176,.35),transparent 70%),radial-gradient(30% 30% at 15% 90%,rgba(244,185,66,.18),transparent 70%);animation:aurora 16s ease-in-out infinite alternate}
 .join h2{margin:0 0 8px}
 .join p{margin:0;color:#CFE6DC;max-width:46ch}
-form{display:flex;flex-direction:column;gap:10px;width:100%}
-input[type=email]{border:0;border-radius:999px;padding:15px 20px;font:inherit;font-size:16px;background:rgba(255,255,255,.1);color:var(--ink);width:100%}
-input[type=email]::placeholder{color:#9FC9B8}
-input[type=email]:focus{outline:2px solid var(--mint)}
+.joinbox{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.joinnote{color:#9FC9B8;font-size:13px}
+.btn.big{padding:16px 28px;font-size:16px}
+.wlmodal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:20px;background:rgba(3,8,6,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.wlmodal[hidden]{display:none}
+.wlcard{position:relative;width:min(440px,100%);background:var(--surface);border:1px solid rgba(255,255,255,.09);border-radius:26px;padding:30px 28px 26px;box-shadow:0 60px 120px -30px rgba(0,0,0,.9);animation:wlin .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes wlin{from{opacity:0;transform:translateY(16px) scale(.98)}}
+.wlcard h3{margin:0 0 6px;font-size:24px;letter-spacing:-.025em}
+.wlcard p{margin:0 0 18px;color:var(--body);font-size:15px}
+.wlclose{all:unset;position:absolute;right:14px;top:10px;width:36px;height:36px;display:grid;place-items:center;border-radius:50%;cursor:pointer;color:var(--muted);font-size:24px}
+.wlclose:hover{background:rgba(255,255,255,.06);color:var(--ink)}
+#wl{display:flex;flex-direction:column;gap:12px}
+#wl label{display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--muted);font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}
+#wl input,#wl select{border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:13px 14px;font:inherit;font-size:16px;background:rgba(255,255,255,.05);color:var(--ink);width:100%;text-transform:none;letter-spacing:0;font-family:var(--f)}
+#wl select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%237E8D87' stroke-width='1.8'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+#wl input:focus,#wl select:focus{outline:2px solid var(--mint);border-color:transparent}
+#wl .hp{position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden}
+#wl .btn{margin-top:4px}
+.wlfine{display:block;color:var(--muted);font-size:12.5px;line-height:1.45}.wlfine a{color:var(--mint);text-decoration:none}
+.linkbtn{all:unset;color:var(--mint);cursor:pointer}
+.wlerr{display:none;color:#FF8A80;font-size:13.5px}.wlerr.on{display:block}
+.btn[disabled]{opacity:.6;cursor:wait}
 .queue{display:none;flex-direction:column;gap:12px}
 .queue .pos{font-size:clamp(40px,6vw,64px);font-weight:700;letter-spacing:-.04em;line-height:1}
 .queue .pos small{font-size:16px;color:#CFE6DC;font-weight:500;letter-spacing:0;display:block}
@@ -488,6 +506,7 @@ footer a{color:var(--muted);text-decoration:none}
   .chip{font-size:12.5px;padding:9px 12px}
   .nums{grid-template-columns:1fr 1fr;padding-bottom:50px}
   .globe-wrap,.priv,.keys,.calc,.join{grid-template-columns:1fr}
+  .wlcard{padding:24px 20px 22px}
   .plans{grid-template-columns:1fr}
   section{padding-block:30px 64px}
   .ticker{min-height:0;height:372px;overflow:hidden}
@@ -501,8 +520,31 @@ footer a{color:var(--muted);text-decoration:none}
 
 
 <canvas id="aur" aria-hidden="true"></canvas>
-<header><div class="wrap"><a href="#top" class="wm" role="img" aria-label="Alpha"></a><nav class="nav" aria-label="Sections"><a href="#app-s">Product</a><a href="#biz-s">Business</a><a href="#sec-s">Security</a><a href="faq.html">FAQ</a><a href="careers.html">Careers</a></nav><span class="spacer"></span><a class="btn sm ghost" href="https://app.alpha.com.ky/" rel="noopener">Log in</a><a class="btn sm" href="#join">Join the waitlist</a><button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button></div>
-<div class="mnav" id="mnav"><a href="#app-s">Product</a><a href="#biz-s">Business</a><a href="#sec-s">Security</a><a href="faq.html">FAQ</a><a href="careers.html">Careers</a><a href="https://app.alpha.com.ky/" rel="noopener">Log in</a><a href="#join" class="hi">Join the waitlist</a></div></header>
+<header><div class="wrap"><a href="#top" class="wm" role="img" aria-label="Alpha"></a><nav class="nav" aria-label="Sections"><a href="#app-s">Product</a><a href="#biz-s">Business</a><a href="#sec-s">Security</a><a href="faq.html">FAQ</a><a href="careers.html">Careers</a></nav><span class="spacer"></span><a class="btn sm ghost" href="https://app.alpha.com.ky/" rel="noopener">Log in</a><a class="btn sm" href="#join" data-open-wl>Join the waitlist</a><button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button></div>
+<div class="mnav" id="mnav"><a href="#app-s">Product</a><a href="#biz-s">Business</a><a href="#sec-s">Security</a><a href="faq.html">FAQ</a><a href="careers.html">Careers</a><a href="https://app.alpha.com.ky/" rel="noopener">Log in</a><a href="#join" class="hi" data-open-wl>Join the waitlist</a></div></header>
+<div class="wlmodal" id="wlmodal" role="dialog" aria-modal="true" aria-labelledby="wlh" hidden>
+ <div class="wlcard">
+  <button class="wlclose" type="button" id="wlclose" aria-label="Close">×</button>
+  <div id="wlstep1">
+   <h3 id="wlh">Join the waitlist</h3>
+   <p>Opening 2027, country by country. Founding members first.</p>
+   <form id="wl" novalidate>
+    <label>First name<input type="text" name="name" id="wlname" autocomplete="given-name" required maxlength="80"></label>
+    <label>Email<input type="email" name="email" id="wlemail" autocomplete="email" required></label>
+    <label>Country<select name="country" id="wlcountry" required><option value="" disabled selected>Choose…</option></select></label>
+    <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+    <button class="btn primary big" type="submit" id="wlsubmit">Reserve my place</button>
+    <small class="wlfine">One confirmation email, then one email when it's your turn. Your details stay with Alpha. <a href="#legal">Privacy</a>.</small>
+    <div class="wlerr" id="wlerr" role="alert"></div>
+   </form>
+  </div>
+  <div id="wlstep2" hidden>
+   <h3>Check your inbox</h3>
+   <p id="wlsent">We've sent a confirmation to <b id="wlto"></b>. Tap the button in it and your place is reserved.</p>
+   <small class="wlfine">Nothing in the inbox after a minute? Check spam, or <button type="button" class="linkbtn" id="wlagain">send it again</button>.</small>
+  </div>
+ </div>
+</div>
 
 <main class="wrap" id="top">
  <section class="hero">
@@ -755,17 +797,14 @@ footer a{color:var(--muted);text-decoration:none}
    <ul class="perks"><li>Founding members: the first 10,000 get Elite Metal free for their first year</li><li>Your account number is yours in the order you joined</li><li>No spam. One email when it's your turn, and the occasional build update</li></ul>
   </div>
   <div>
-   <form id="wl" action="https://formsubmit.co/hello@alpha.com.ky" method="POST">
-    <input type="hidden" name="_subject" value="Alpha waitlist">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="https://alpha.com.ky/#join">
-    <input type="email" name="email" id="email" placeholder="you@example.com" required autocomplete="email">
-    <button class="btn primary" type="submit">Join the waitlist</button>
-   </form>
+   <div class="joinbox" id="joinbox">
+    <button class="btn primary big" type="button" data-open-wl>Join the waitlist</button>
+    <small class="joinnote">Takes 20 seconds. We'll send one email to confirm.</small>
+   </div>
    <div class="queue" id="queue">
-    <div class="pos"><span id="posn">You're in.</span><small>We'll email your place in the queue and your link.</small></div>
+    <div class="pos"><span id="posn">You're in.</span><small id="possub">Your place in the queue, in the order you confirmed.</small></div>
     <div class="ref"><code id="reflink">alpha.com.ky/?r=…</code><button class="btn sm" type="button" id="copyref">Copy</button></div>
-    <small style="color:#CFE6DC">Share your link. Each friend moves you up 50 places and earns you 25 $AG.</small>
+    <small style="color:#CFE6DC">Share your link. Each friend who confirms moves you up 50 places and earns you 25 $AG when you both open an account.</small>
    </div>
   </div>
  </section>
@@ -979,13 +1018,32 @@ document.querySelectorAll('.num b').forEach(function(el){var txt=el.textContent,
   requestAnimationFrame(draw)}
  var io2=new IntersectionObserver(function(es){if(es[0].isIntersecting&&!run){run=true;requestAnimationFrame(draw)}},{threshold:.3});io2.observe(cv)})();
 /* waitlist */
-var f=document.getElementById('wl'),q=document.getElementById('queue'),toast=document.getElementById('toast');
-function note(m){toast.textContent=m;toast.style.display='block';setTimeout(function(){toast.style.display='none'},2200)}
-f.addEventListener('submit',function(e){e.preventDefault();var em=document.getElementById('email').value.trim();
- try{fetch('https://formsubmit.co/ajax/hello@alpha.com.ky',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({email:em,_subject:'Alpha waitlist'})}).catch(function(){})}catch(_){}var h=em.split('@')[0].replace(/[^a-z0-9]/gi,'').slice(0,8).toLowerCase()||'friend';
- var code=h+Math.floor(1000+Math.random()*9000).toString(36);document.getElementById('reflink').textContent='alpha.com.ky/?r='+code;document.getElementById('posn').textContent='#'+(4000+Math.floor(Math.random()*900)).toLocaleString('en-US');
- f.style.display='none';q.style.display='flex'});
-document.getElementById('copyref').addEventListener('click',function(){var v='https://'+document.getElementById('reflink').textContent;try{navigator.clipboard.writeText(v).then(function(){note('Link copied')},function(){note(v)})}catch(_){note(v)}});
+var WL_ENDPOINT='{{WL_ENDPOINT}}';
+var toast=document.getElementById('toast');function note(m){toast.textContent=m;toast.style.display='block';setTimeout(function(){toast.style.display='none'},2600)}
+(function(){var modal=document.getElementById('wlmodal'),form=document.getElementById('wl'),err=document.getElementById('wlerr'),s1=document.getElementById('wlstep1'),s2=document.getElementById('wlstep2'),btn=document.getElementById('wlsubmit'),opened=0,last=null;
+ var codes='AF AX AL DZ AS AD AO AI AQ AG AR AM AW AU AT AZ BS BH BD BB BY BE BZ BJ BM BT BO BA BW BR IO BN BG BF BI CV KH CM CA KY CF TD CL CN CX CC CO KM CG CD CK CR CI HR CU CW CY CZ DK DJ DM DO EC EG SV GQ ER EE SZ ET FK FO FJ FI FR GF PF GA GM GE DE GH GI GR GL GD GP GU GT GG GN GW GY HT HN HK HU IS IN ID IQ IE IM IL IT JM JP JE JO KZ KE KI KR KW KG LA LV LB LS LR LY LI LT LU MO MG MW MY MV ML MT MH MQ MR MU YT MX FM MD MC MN ME MS MA MZ MM NA NR NP NL NC NZ NI NE NG NU NF MK MP NO OM PK PW PS PA PG PY PE PH PN PL PT PR QA RE RO RU RW BL SH KN LC MF PM VC WS SM ST SA SN RS SC SL SG SX SK SI SB SO ZA GS ES LK SD SR SJ SE CH TW TJ TZ TH TL TG TK TO TT TN TR TM TC TV UG UA AE GB US UM UY UZ VU VA VE VN VG VI WF EH YE ZM ZW'.split(' ');
+ var sel=document.getElementById('wlcountry');try{var dn=new Intl.DisplayNames(['en'],{type:'region'});var list=codes.map(function(c){return [c,dn.of(c)]}).sort(function(a,b){return a[1].localeCompare(b[1])});list.forEach(function(x){var o=document.createElement('option');o.value=x[1];o.textContent=x[1];sel.appendChild(o)})}catch(_){var o=document.createElement('option');o.value='Other';o.textContent='My country';sel.appendChild(o)}
+ var ref='';try{ref=new URLSearchParams(location.search).get('r')||''}catch(_){}
+ function open(){modal.hidden=false;opened=Date.now();document.body.style.overflow='hidden';setTimeout(function(){document.getElementById('wlname').focus()},50)}
+ function close(){modal.hidden=true;document.body.style.overflow=''}
+ document.querySelectorAll('[data-open-wl]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();open()})});
+ document.getElementById('wlclose').addEventListener('click',close);modal.addEventListener('click',function(e){if(e.target===modal)close()});addEventListener('keydown',function(e){if(e.key==='Escape'&&!modal.hidden)close()});
+ function fail(m){err.textContent=m;err.classList.add('on');btn.disabled=false;btn.textContent='Reserve my place'}
+ function send(payload,cb){if(!WL_ENDPOINT||WL_ENDPOINT.indexOf('{{')===0){cb({ok:false,error:'The waitlist opens shortly. Please try again later.'});return}
+  fetch(WL_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).then(function(r){return r.json()}).then(cb).catch(function(){cb({ok:false,error:'Couldn\'t reach the waitlist. Please try again.'})})}
+ form.addEventListener('submit',function(e){e.preventDefault();err.classList.remove('on');
+  var name=document.getElementById('wlname').value.trim(),email=document.getElementById('wlemail').value.trim(),country=sel.value;
+  if(!name)return fail('Please tell us your first name.');if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))return fail('That email address doesn\'t look right.');if(!country)return fail('Please choose your country.');
+  btn.disabled=true;btn.textContent='Reserving…';
+  last={name:name,email:email,country:country,ref:ref,t:Date.now()-opened,website:form.website.value,ua:navigator.userAgent,source:'site'};
+  send(last,function(r){if(!r.ok)return fail(r.error||'Something went wrong.');
+   if(r.state==='confirmed'){close();showJoined(r.position,r.code);return}
+   document.getElementById('wlto').textContent=email;s1.hidden=true;s2.hidden=false;btn.disabled=false;btn.textContent='Reserve my place'})});
+ document.getElementById('wlagain').addEventListener('click',function(){if(!last)return;last.t=3000;send(last,function(){note('Sent again')})});
+ function showJoined(pos,code){var q=document.getElementById('queue'),jb=document.getElementById('joinbox');document.getElementById('posn').textContent='#'+Number(pos).toLocaleString('en-US');document.getElementById('reflink').textContent='alpha.com.ky/?r='+code;jb.style.display='none';q.style.display='flex';try{document.getElementById('join').scrollIntoView()}catch(_){}}
+ try{var u=new URLSearchParams(location.search);if(u.get('joined')==='1'&&u.get('pos'))showJoined(u.get('pos'),u.get('code')||'')}catch(_){}
+ document.getElementById('copyref').addEventListener('click',function(){var v='https://'+document.getElementById('reflink').textContent;try{navigator.clipboard.writeText(v).then(function(){note('Link copied')},function(){note(v)})}catch(_){note(v)}});
+})();
 })();
 </script>
 
