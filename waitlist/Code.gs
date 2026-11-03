@@ -137,5 +137,12 @@ function sendConfirm(email, name, token) {
     '<p style="font-size:14px;color:#5F7A6F">You\'ll see your position in the queue and your referral link straight away. If you didn\'t ask to join, ignore this email and nothing happens.</p>' +
     '<p style="font-size:12px;color:#8FA59C;margin-top:34px">Alpha Corp · Cayman Islands · <a href="' + SITE + '" style="color:#1FC48C;text-decoration:none">alpha.com.ky</a><br>Alpha will never ask you for a password or a code by email.</p>' +
     '</div>';
-  MailApp.sendEmail({ to: email, subject: 'Confirm your place on the Alpha waitlist', htmlBody: html, name: FROM_NAME, replyTo: REPLY_TO });
+  var opts = { htmlBody: html, name: FROM_NAME, replyTo: REPLY_TO };
+  try {
+    // send from the hello@ alias when it is configured on this account ("Send mail as" in Gmail)
+    if (GmailApp.getAliases().indexOf(REPLY_TO) >= 0) opts.from = REPLY_TO;
+    GmailApp.sendEmail(email, 'Confirm your place on the Alpha waitlist', 'Open this email in a client that shows HTML to confirm your place.', opts);
+  } catch (e) {
+    MailApp.sendEmail({ to: email, subject: 'Confirm your place on the Alpha waitlist', htmlBody: html, name: FROM_NAME, replyTo: REPLY_TO });
+  }
 }
