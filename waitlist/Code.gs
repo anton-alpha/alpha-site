@@ -193,8 +193,8 @@ function sendWelcome(email, first, number, link, token) {
   var opts = { htmlBody: html, name: FROM_NAME, replyTo: REPLY_TO };
   try {
     if (GmailApp.getAliases().indexOf(REPLY_TO) >= 0) opts.from = REPLY_TO;
-    GmailApp.sendEmail(email, 'You\'re on the Alpha waitlist: #' + number.toLocaleString('en-US'), 'You are #' + number + ' on the Alpha waitlist. Your invite link: ' + link, opts);
+    GmailApp.sendEmail(email, 'Welcome to Alpha, ' + first, 'Hi ' + first + ',\n\nYou are on the Alpha waitlist. Your place: #' + number.toLocaleString('en-US') + '.\n\nConfirm your email: ' + confirmLink + '\n\nYour invite link: ' + link + '\nEach friend who joins through it moves you up 50 places and earns you 25 $AG when you both open an account.\n\nWe will email you once, when it is your turn.\n\nAlpha Corp, Cayman Islands. Alpha will never ask you for a password or a code by email.', opts);
   } catch (e) {
-    MailApp.sendEmail({ to: email, subject: 'You\'re on the Alpha waitlist: #' + number.toLocaleString('en-US'), htmlBody: html, name: FROM_NAME, replyTo: REPLY_TO });
+    MailApp.sendEmail({ to: email, subject: 'Welcome to Alpha, ' + first, htmlBody: html, name: FROM_NAME, replyTo: REPLY_TO });
   }
 }
