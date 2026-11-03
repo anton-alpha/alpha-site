@@ -12,7 +12,7 @@
  *     Copy the Web app URL (ends in /exec) and send it to Claude.
  *  5. Any later code change: Deploy → Manage deployments → edit → New version.
  *
- * Rows: id | timestamp | email | name | country | ref_by | code | confirmed | confirmed_at | token | ua | source | type | use
+ * Rows: id | timestamp | email | name | country | ref_by | code | confirmed | confirmed_at | token | ua | source | type | use | surname | phone | business
  */
 
 var SHEET = 'waitlist';
@@ -26,10 +26,10 @@ function setup() {
   var ss = SpreadsheetApp.getActive();
   var sh = ss.getSheetByName(SHEET) || ss.insertSheet(SHEET);
   if (sh.getLastRow() === 0) {
-    sh.appendRow(['id', 'timestamp', 'email', 'name', 'country', 'ref_by', 'code', 'confirmed', 'confirmed_at', 'token', 'ua', 'source', 'type', 'use']);
+    sh.appendRow(['id', 'timestamp', 'email', 'name', 'country', 'ref_by', 'code', 'confirmed', 'confirmed_at', 'token', 'ua', 'source', 'type', 'use', 'surname', 'phone', 'business']);
     sh.setFrozenRows(1);
-  } else if (sh.getLastColumn() < 14) {
-    sh.getRange(1, 13, 1, 2).setValues([['type', 'use']]);
+  } else if (sh.getLastColumn() < 17) {
+    sh.getRange(1, 13, 1, 5).setValues([['type', 'use', 'surname', 'phone', 'business']]);
   }
   PropertiesService.getScriptProperties().setProperty('ready', '1');
 }
@@ -86,7 +86,13 @@ function doPost(e) {
     var token = Utilities.getUuid().replace(/-/g, '');
     var type = String(p.type || 'personal').slice(0, 16);
     var use = String(p.use || '').slice(0, 200);
-    sh.appendRow([id, new Date(), email, name, country, refBy, code, false, '', token, String(p.ua || '').slice(0, 160), String(p.source || 'site').slice(0, 40), type, use]);
+    var surname = String(p.surname || '').trim().slice(0, 60);
+    var phone = String(p.phone || '').replace(/[^0-9+() .-]/g, '').trim().slice(0, 24);
+    var business = String(p.business || '').trim().slice(0, 100);
+    if (!surname) return out({ ok: false, error: 'Please tell us your surname.' });
+    if (phone.replace(/\D/g, '').length < 7) return out({ ok: false, error: 'Please enter your mobile number with the country code.' });
+    if (type === 'business' && !business) return out({ ok: false, error: 'Please tell us your business name.' });
+    sh.appendRow([id, new Date(), email, name, country, refBy, code, false, '', token, String(p.ua || '').slice(0, 160), String(p.source || 'site').slice(0, 40), type, use, surname, "'" + phone, business]);
     sendConfirm(email, name, token);
     return out({ ok: true, state: 'pending' });
   } catch (err) {
