@@ -466,7 +466,7 @@ h2.rv{transition-duration:1.1s}
 .btn.big{padding:16px 28px;font-size:16px}
 .wlmodal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:20px;background:rgba(3,8,6,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .wlmodal[hidden]{display:none}
-.wlcard{position:relative;width:min(440px,100%);background:var(--surface);border:1px solid rgba(255,255,255,.09);border-radius:26px;padding:30px 28px 26px;box-shadow:0 60px 120px -30px rgba(0,0,0,.9);animation:wlin .4s cubic-bezier(.2,.8,.2,1)}
+.wlcard{position:relative;width:min(440px,100%);max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);overflow:auto;-webkit-overflow-scrolling:touch;background:var(--surface);border:1px solid rgba(255,255,255,.09);border-radius:26px;padding:30px 28px 26px;box-shadow:0 60px 120px -30px rgba(0,0,0,.9);animation:wlin .4s cubic-bezier(.2,.8,.2,1)}
 @keyframes wlin{from{opacity:0;transform:translateY(16px) scale(.98)}}
 .wlcard h3{margin:0 0 6px;font-size:24px;letter-spacing:-.025em}
 .wlcard p{margin:0 0 18px;color:var(--body);font-size:15px}
