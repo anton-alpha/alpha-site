@@ -483,6 +483,7 @@ h2.rv{transition-duration:1.1s}
 #wl input:focus,#wl select:focus{outline:2px solid var(--mint);border-color:transparent}
 #wl .hp{position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden}
 #wl .btn{margin-top:4px}
+.wl2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .wlrow{display:flex;flex-direction:column;gap:8px}.wllab{font-size:12.5px;color:var(--muted);font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}.wllab em{font-style:normal;text-transform:none;letter-spacing:0;color:#5F7A6F}
 .seg{display:inline-flex;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:3px;width:max-content}
 .seg button{all:unset;cursor:pointer;padding:8px 16px;border-radius:999px;font-size:14px;color:var(--body)}.seg button.on{background:var(--mint);color:#04140E;font-weight:600}
@@ -534,11 +535,13 @@ footer a{color:var(--muted);text-decoration:none}
    <h3 id="wlh">Join the waitlist</h3>
    <p>Opening 2027, country by country. Founding members first.</p>
    <form id="wl" novalidate>
-    <label>First name<input type="text" name="name" id="wlname" autocomplete="given-name" required maxlength="80"></label>
+    <div class="wl2"><label>First name<input type="text" name="name" id="wlname" autocomplete="given-name" required maxlength="60"></label><label>Surname<input type="text" name="surname" id="wlsurname" autocomplete="family-name" required maxlength="60"></label></div>
     <label>Email<input type="email" name="email" id="wlemail" autocomplete="email" required></label>
+    <label>Mobile<input type="tel" name="phone" id="wlphone" autocomplete="tel" inputmode="tel" placeholder="+44 7700 900123" required></label>
     <label>Country<select name="country" id="wlcountry" required><option value="" disabled selected>Choose…</option></select></label>
     <div class="wlrow"><span class="wllab">Account</span><div class="seg" id="wltype"><button type="button" class="on" data-v="personal">Personal</button><button type="button" data-v="business">Business</button></div></div>
-    <div class="wlrow"><span class="wllab">What would you use Alpha for? <em>optional</em></span><div class="chips" id="wluse"><button type="button" data-v="Travel or live abroad">Travel or live abroad</button><button type="button" data-v="Get paid from abroad">Get paid from abroad</button><button type="button" data-v="Send money home">Send money home</button><button type="button" data-v="Protect savings from inflation">Protect savings</button><button type="button" data-v="Hold dollars">Hold dollars</button><button type="button" data-v="Run a business">Run a business</button></div></div>
+    <label id="wlbizrow" hidden>Business name<input type="text" name="business" id="wlbiz" autocomplete="organization" maxlength="100"></label>
+    <div class="wlrow"><span class="wllab">What would you use Alpha for? <em>optional</em></span><div class="chips" id="wluse"><button type="button" data-v="Replace my bank">Replace my bank</button><button type="button" data-v="Travel or live abroad">Travel or live abroad</button><button type="button" data-v="Get paid from abroad">Get paid from abroad</button><button type="button" data-v="Send money home">Send money home</button><button type="button" data-v="Protect savings from inflation">Protect savings</button><button type="button" data-v="Hold dollars">Hold dollars</button><button type="button" data-v="Run a business">Run a business</button></div></div>
     <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
     <button class="btn primary big" type="submit" id="wlsubmit">Reserve my place</button>
     <small class="wlfine">One confirmation email, then one email when it's your turn. Your details stay with Alpha. <a href="#legal">Privacy</a>.</small>
@@ -1034,18 +1037,19 @@ var toast=document.getElementById('toast');function note(m){toast.textContent=m;
  function open(){modal.hidden=false;opened=Date.now();document.body.style.overflow='hidden';setTimeout(function(){document.getElementById('wlname').focus()},50)}
  function close(){modal.hidden=true;document.body.style.overflow=''}
  document.querySelectorAll('[data-open-wl]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();open()})});
- document.querySelectorAll('#wltype button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#wltype button').forEach(function(x){x.classList.remove('on')});b.classList.add('on')})});
+ document.querySelectorAll('#wltype button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#wltype button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');document.getElementById('wlbizrow').hidden=b.dataset.v!=='business'})});
  document.querySelectorAll('#wluse button').forEach(function(b){b.addEventListener('click',function(){b.classList.toggle('on')})});
  document.getElementById('wlclose').addEventListener('click',close);modal.addEventListener('click',function(e){if(e.target===modal)close()});addEventListener('keydown',function(e){if(e.key==='Escape'&&!modal.hidden)close()});
  function fail(m){err.textContent=m;err.classList.add('on');btn.disabled=false;btn.textContent='Reserve my place'}
  function send(payload,cb){if(!WL_ENDPOINT||WL_ENDPOINT.indexOf('{{')===0){cb({ok:false,error:'The waitlist opens shortly. Please try again later.'});return}
   fetch(WL_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).then(function(r){return r.json()}).then(cb).catch(function(){cb({ok:false,error:'Couldn\'t reach the waitlist. Please try again.'})})}
  form.addEventListener('submit',function(e){e.preventDefault();err.classList.remove('on');
-  var name=document.getElementById('wlname').value.trim(),email=document.getElementById('wlemail').value.trim(),country=sel.value;
-  if(!name)return fail('Please tell us your first name.');if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))return fail('That email address doesn\'t look right.');if(!country)return fail('Please choose your country.');
+  var name=document.getElementById('wlname').value.trim(),surname=document.getElementById('wlsurname').value.trim(),email=document.getElementById('wlemail').value.trim(),phone=document.getElementById('wlphone').value.trim(),country=sel.value,biz=document.getElementById('wlbiz').value.trim();
+  if(!name)return fail('Please tell us your first name.');if(!surname)return fail('Please tell us your surname.');if(!/^\+?[0-9 ().-]{7,20}$/.test(phone))return fail('Please enter your mobile number with the country code, e.g. +44 7700 900123.');if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))return fail('That email address doesn\'t look right.');if(!country)return fail('Please choose your country.');
   btn.disabled=true;btn.textContent='Reserving…';
   var type=(document.querySelector('#wltype .on')||{}).dataset?document.querySelector('#wltype .on').dataset.v:'personal';var use=[].map.call(document.querySelectorAll('#wluse .on'),function(b){return b.dataset.v}).join('; ');
-  last={name:name,email:email,country:country,type:type,use:use,ref:ref,t:Date.now()-opened,website:form.website.value,ua:navigator.userAgent,source:'site'};
+  if(type==='business'&&!biz)return fail('Please tell us your business name.');
+  last={name:name,surname:surname,email:email,phone:phone,business:biz,country:country,type:type,use:use,ref:ref,t:Date.now()-opened,website:form.website.value,ua:navigator.userAgent,source:'site'};
   send(last,function(r){if(!r.ok)return fail(r.error||'Something went wrong.');
    if(r.state==='confirmed'){close();showJoined(r.position,r.code);return}
    document.getElementById('wlto').textContent=email;s1.hidden=true;s2.hidden=false;btn.disabled=false;btn.textContent='Reserve my place'})});
