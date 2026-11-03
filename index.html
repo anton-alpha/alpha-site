@@ -491,6 +491,8 @@ h2.rv{transition-duration:1.1s}
 .wlfine{display:block;color:var(--muted);font-size:12.5px;line-height:1.45}.wlfine a{color:var(--mint);text-decoration:none}
 .linkbtn{all:unset;color:var(--mint);cursor:pointer}
 .wlerr{display:none;color:#FF8A80;font-size:13.5px}.wlerr.on{display:block}
+.wlpos{font-size:56px;font-weight:700;letter-spacing:-.04em;line-height:1;margin:4px 0 18px;background:var(--glow);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cf-turnstile{min-height:0}.cf-turnstile iframe{border-radius:12px}
 .btn[disabled]{opacity:.6;cursor:wait}
 .queue{display:none;flex-direction:column;gap:12px}
 .queue .pos{font-size:clamp(40px,6vw,64px);font-weight:700;letter-spacing:-.04em;line-height:1}
@@ -543,15 +545,18 @@ footer a{color:var(--muted);text-decoration:none}
     <label id="wlbizrow" hidden>Business name<input type="text" name="business" id="wlbiz" autocomplete="organization" maxlength="100"></label>
     <div class="wlrow"><span class="wllab">What would you use Alpha for? <em>optional</em></span><div class="chips" id="wluse"><button type="button" data-v="Replace my bank">Replace my bank</button><button type="button" data-v="Travel or live abroad">Travel or live abroad</button><button type="button" data-v="Get paid from abroad">Get paid from abroad</button><button type="button" data-v="Send money home">Send money home</button><button type="button" data-v="Protect savings from inflation">Protect savings</button><button type="button" data-v="Hold dollars">Hold dollars</button><button type="button" data-v="Run a business">Run a business</button></div></div>
     <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+    <div class="cf-turnstile" id="wlcf" data-sitekey="{{TURNSTILE_SITE_KEY}}" data-theme="dark" data-size="flexible" data-appearance="interaction-only"></div>
     <button class="btn primary big" type="submit" id="wlsubmit">Reserve my place</button>
-    <small class="wlfine">One confirmation email, then one email when it's your turn. Your details stay with Alpha. <a href="#legal">Privacy</a>.</small>
+    <small class="wlfine">One email with your place and invite link, then one when it's your turn. Your details stay with Alpha. <a href="#legal">Privacy</a>.</small>
     <div class="wlerr" id="wlerr" role="alert"></div>
    </form>
   </div>
   <div id="wlstep2" hidden>
-   <h3>Check your inbox</h3>
-   <p id="wlsent">We've sent a confirmation to <b id="wlto"></b>. Tap the button in it and your place is reserved.</p>
-   <small class="wlfine">Nothing in the inbox after a minute? Check spam, or <button type="button" class="linkbtn" id="wlagain">send it again</button>.</small>
+   <h3>You're in.</h3>
+   <p>Your place in the queue:</p>
+   <div class="wlpos" id="wlpos">#2,136</div>
+   <p>We've emailed this to <b id="wlto"></b> with your invite link. Each friend who joins through it moves you up 50 places and earns you 25 $AG when you both open an account.</p>
+   <button class="btn primary big" type="button" id="wlcopy">Copy my invite link</button>
   </div>
  </div>
 </div>
@@ -812,7 +817,7 @@ footer a{color:var(--muted);text-decoration:none}
     <small class="joinnote">Takes 20 seconds. We'll send one email to confirm.</small>
    </div>
    <div class="queue" id="queue">
-    <div class="pos"><span id="posn">You're in.</span><small id="possub">Your place in the queue. We'll email you when it's your turn.</small></div>
+    <div class="pos"><span id="posn">You're in.</span><small id="possub">Your place in the queue. It's in your inbox too, with your invite link.</small></div>
     <div class="invite"><button class="btn primary" type="button" id="copyref">Copy my invite link</button><small>Each friend who joins through it moves you up 50 places and earns you 25 $AG when you both open an account.</small></div>
     <code id="reflink" hidden></code>
    </div>
@@ -1041,6 +1046,7 @@ var toast=document.getElementById('toast');function note(m){toast.textContent=m;
  document.querySelectorAll('#wluse button').forEach(function(b){b.addEventListener('click',function(){b.classList.toggle('on')})});
  document.getElementById('wlclose').addEventListener('click',close);modal.addEventListener('click',function(e){if(e.target===modal)close()});addEventListener('keydown',function(e){if(e.key==='Escape'&&!modal.hidden)close()});
  function fail(m){err.textContent=m;err.classList.add('on');btn.disabled=false;btn.textContent='Reserve my place'}
+ if(document.getElementById('wlcf').dataset.sitekey.indexOf('{{')===0)document.getElementById('wlcf').remove();else{var sc=document.createElement('script');sc.src='https://challenges.cloudflare.com/turnstile/v0/api.js';sc.async=true;sc.defer=true;document.head.appendChild(sc)}
  function send(payload,cb){if(!WL_ENDPOINT||WL_ENDPOINT.indexOf('{{')===0){cb({ok:false,error:'The waitlist opens shortly. Please try again later.'});return}
   fetch(WL_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).then(function(r){return r.json()}).then(cb).catch(function(){cb({ok:false,error:'Couldn\'t reach the waitlist. Please try again.'})})}
  form.addEventListener('submit',function(e){e.preventDefault();err.classList.remove('on');
@@ -1049,13 +1055,13 @@ var toast=document.getElementById('toast');function note(m){toast.textContent=m;
   btn.disabled=true;btn.textContent='Reserving…';
   var type=(document.querySelector('#wltype .on')||{}).dataset?document.querySelector('#wltype .on').dataset.v:'personal';var use=[].map.call(document.querySelectorAll('#wluse .on'),function(b){return b.dataset.v}).join('; ');
   if(type==='business'&&!biz)return fail('Please tell us your business name.');
-  last={name:name,surname:surname,email:email,phone:phone,business:biz,country:country,type:type,use:use,ref:ref,t:Date.now()-opened,website:form.website.value,ua:navigator.userAgent,source:'site'};
-  send(last,function(r){if(!r.ok)return fail(r.error||'Something went wrong.');
-   if(r.state==='confirmed'){close();showJoined(r.position,r.code);return}
-   document.getElementById('wlto').textContent=email;s1.hidden=true;s2.hidden=false;btn.disabled=false;btn.textContent='Reserve my place'})});
- document.getElementById('wlagain').addEventListener('click',function(){if(!last)return;last.t=3000;send(last,function(){note('Sent again')})});
+  var cf=(form.querySelector('[name="cf-turnstile-response"]')||{}).value||'';
+  last={name:name,surname:surname,email:email,phone:phone,business:biz,country:country,type:type,use:use,ref:ref,turnstile:cf,t:Date.now()-opened,website:form.website.value,ua:navigator.userAgent,source:'site'};
+  send(last,function(r){if(!r.ok){try{if(window.turnstile)turnstile.reset()}catch(_){}return fail(r.error||'Something went wrong.')}
+   document.getElementById('wlto').textContent=email;document.getElementById('wlpos').textContent='#'+Number(r.position).toLocaleString('en-US');lastLink=r.link||('https://alpha.com.ky/?r='+r.code);
+   s1.hidden=true;s2.hidden=false;btn.disabled=false;btn.textContent='Reserve my place';showJoined(r.position,r.code)})});
+ var lastLink='';document.getElementById('wlcopy').addEventListener('click',function(){try{navigator.clipboard.writeText(lastLink).then(function(){note('Invite link copied')},function(){note(lastLink)})}catch(_){note(lastLink)}});
  function showJoined(pos,code){var q=document.getElementById('queue'),jb=document.getElementById('joinbox');document.getElementById('posn').textContent='#'+Number(pos).toLocaleString('en-US');document.getElementById('reflink').textContent='alpha.com.ky/?r='+code;jb.style.display='none';q.style.display='flex';try{document.getElementById('join').scrollIntoView()}catch(_){}}
- try{var u=new URLSearchParams(location.search);if(u.get('joined')==='1'&&u.get('pos'))showJoined(u.get('pos'),u.get('code')||'')}catch(_){}
  document.getElementById('copyref').addEventListener('click',function(){var v='https://'+document.getElementById('reflink').textContent;try{navigator.clipboard.writeText(v).then(function(){note('Invite link copied: '+v)},function(){note(v)})}catch(_){note(v)}});
 })();
 })();
