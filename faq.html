@@ -477,9 +477,12 @@ h2.rv{transition-duration:1.1s}
 #wl input,#wl select{border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:13px 14px;font:inherit;font-size:16px;background:rgba(255,255,255,.05);color:var(--ink);width:100%;text-transform:none;letter-spacing:0;font-family:var(--f)}
 #wl select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%237E8D87' stroke-width='1.8'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
 #wl input:focus,#wl select:focus{outline:2px solid var(--mint);border-color:transparent}
+#wl label[hidden],#wlstep2[hidden],#wlstep1[hidden]{display:none}
 #wl .hp{position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden}
 #wl .btn{margin-top:4px}
 .wl2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.phonerow{display:grid;grid-template-columns:132px 1fr;gap:8px}
+#wl .phonerow select{padding-right:30px;font-family:var(--f);font-size:15px}
 .wlrow{display:flex;flex-direction:column;gap:8px}.wllab{font-size:12.5px;color:var(--muted);font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}.wllab em{font-style:normal;text-transform:none;letter-spacing:0;color:#5F7A6F}
 .seg{display:inline-flex;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:3px;width:max-content}
 .seg button{all:unset;cursor:pointer;padding:8px 16px;border-radius:999px;font-size:14px;color:var(--body)}.seg button.on{background:var(--mint);color:#04140E;font-weight:600}
