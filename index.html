@@ -769,7 +769,7 @@ footer a{color:var(--muted);text-decoration:none}
  <section id="usd-s">
   <span class="eb rv">Always in dollars</span>
   <h2 class="rv">Hold the world's reserve currency.<br>Spend in your own.</h2>
-  <p class="lede rv d1">The US dollar is the currency the world settles in: governments, banks and global business all hold it. Alpha keeps every balance in dollars, wherever you live, so your money sits in the currency the world trusts most, not the one your country happens to use. When you need local money, it converts at that moment, at a rate you see first.</p>
+  <p class="lede rv d1">The US dollar is the currency the world settles in. Alpha keeps every balance in it, wherever you live, so your money sits in the currency the world trusts most, not the one your country happens to use. Local money converts the moment you spend or send, at a rate you see first.</p>
   <div class="usdgrid">
    <div class="chart rv d1"><canvas id="fxc" aria-label="Animated illustration: US$1,000 kept in dollars stays level over five years; kept in a falling local currency it drifts down to about 600"></canvas><p class="assump">Illustration. Over the last five years, dozens of currencies lost a quarter or more of their value against the dollar.</p></div>
    <div class="usdpts rv d2">
@@ -785,9 +785,9 @@ footer a{color:var(--muted);text-decoration:none}
   <h2 class="rv">Built on rails that can't lie.</h2>
   <p class="lede rv d1">Alpha runs on a public blockchain: a ledger nobody owns and anyone can check. It's why the app can make promises no bank can.</p>
   <div class="flow rv d1" id="flow" aria-label="How a payment moves: sealed on your phone, verified on the Alpha ledger, received in under a second, and $AG earned back">
-   <div class="fnode" id="fn1"><em>YOUR PHONE · LISBON</em><b id="f1t">Send US$1,200 to Mina</b><small id="f1s">Choose a recipient. Approve with Face ID.</small><i class="lock" id="f1l"></i></div>
+   <div class="fnode" id="fn1"><em>YOUR PHONE · LISBON</em><b id="f1t">Send US$1,200 to a friend</b><small id="f1s">Choose a recipient. Approve with Face ID.</small><i class="lock" id="f1l"></i></div>
    <div class="fnode ledger" id="fn2"><em>ALPHA LEDGER · PUBLIC BLOCKCHAIN</em><div class="chain" id="chain"></div><b id="f2t">Block #4,182,330 · verified</b><small id="f2s"><span class="ok">Holds US$48,211,004.10 = Owes US$48,211,004.10</span></small></div>
-   <div class="fnode" id="fn3"><em>MINA'S PHONE · SEOUL</em><b id="f3t">US$3,410.20</b><small id="f3s">Waiting…</small></div>
+   <div class="fnode" id="fn3"><em>THEIR PHONE · SEOUL</em><b id="f3t">US$3,410.20</b><small id="f3s">Waiting…</small></div>
    <div class="pkt" id="pkt"></div>
    <div class="pkt ag" id="agp">+2 $AG</div>
    <svg class="flines" id="flines" aria-hidden="true"></svg>
@@ -827,7 +827,7 @@ footer a{color:var(--muted);text-decoration:none}
  <section id="globe-s">
   <span class="eb rv">Borderless</span>
   <h2 class="rv">Money that moves like a message.</h2>
-  <p class="lede rv d1">Send dollars to anyone on Alpha, in any country, and it lands in under a second. Free, every time.</p>
+  <p class="lede rv d1">Send dollars to anyone on Alpha, in any country. It lands in under a second, free, every time.</p>
   <div class="globe-wrap">
    <div class="globe-box rv d1"><canvas id="globe" aria-label="Payments moving between cities around the world"></canvas></div>
    <div class="ticker rv d2" id="ticker" aria-live="polite"></div>
@@ -1088,10 +1088,10 @@ addTick('Lagos','Lisbon',420);addTick('Mumbai','Dubai',1300);
  function scramble(el,final,ms,done){var t0=performance.now(),len=final.length;(function f(t){var k=Math.min(1,(t-t0)/ms),o='';for(var i=0;i<len;i++)o+=i<k*len?final[i]:HEX[Math.random()*16|0];el.textContent=o;if(k<1)requestAnimationFrame(f);else done&&done()})(t0)}
  function run(){var T=function(ms,fn){setTimeout(fn,ms)};
   [n1,n2,n3].forEach(function(n){n.className=n.className.replace(/ (hot|gold)/g,'')});f1t.className='';f1l.classList.remove('on');p12.setAttribute('class','');p23.setAttribute('class','');
-  f1t.textContent='Send US$1,200 to Mina';f1s.textContent='Choose a recipient. Approve with Face ID.';f3t.textContent=money(bal);f3s.textContent='Waiting…';cap.textContent='1 · You approve a payment on your phone.';n1.classList.add('hot');
+  f1t.textContent='Send US$1,200 to a friend';f1s.textContent='Choose a recipient. Approve with Face ID.';f3t.textContent=money(bal);f3s.textContent='Waiting…';cap.textContent='1 · You approve a payment on your phone.';n1.classList.add('hot');
   T(1500,function(){f1t.className='cipher';scramble(f1t,hx(26),700);f1l.classList.add('on');f1s.textContent='Sealed on your phone in 0.3 s. Amount and names never leave it in the clear.';cap.textContent='2 · Your phone makes a proof. The payment is sealed before it leaves.'});
   T(3100,function(){p12.setAttribute('class','lit');pkt.textContent='SEALED PROOF';fly(pkt,n1,n2,1000,function(){n1.classList.remove('hot');n2.classList.add('hot');addBlock();cap.textContent='3 · The ledger verifies the proof and checks that it still holds every dollar it owes.'})});
-  T(5200,function(){p23.setAttribute('class','lit');pkt.textContent='US$1,200';fly(pkt,n2,n3,900,function(){n3.classList.add('hot');var t0=performance.now(),from=bal,to=bal+1200;(function f(t){var k=Math.min(1,(t-t0)/700);f3t.textContent=money(from+(to-from)*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0);f3s.textContent='Received · 0.8 s · free';cap.textContent='4 · Mina has the dollars. Under a second, no fee.'})});
+  T(5200,function(){p23.setAttribute('class','lit');pkt.textContent='US$1,200';fly(pkt,n2,n3,900,function(){n3.classList.add('hot');var t0=performance.now(),from=bal,to=bal+1200;(function f(t){var k=Math.min(1,(t-t0)/700);f3t.textContent=money(from+(to-from)*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0);f3s.textContent='Received · 0.8 s · free';cap.textContent='4 · Your friend has the dollars. Under a second, no fee.'})});
   T(7200,function(){n2.classList.add('gold');fly(agp,n2,n1,1000,function(){n2.classList.remove('gold');n1.classList.add('gold');f1t.className='';f1t.textContent='+2 $AG earned';f1s.textContent='Every $AG is valued at US$1 across Alpha. Use it to pay your fees.';cap.textContent='5 · You earn $AG back for using Alpha.'})});
   T(11500,run)}
  setInterval(function(){if(seen&&Math.random()<0.5)addBlock()},2600)})();
