@@ -1,5 +1,5 @@
 /**
- * Alpha waitlist — Google Apps Script backend (v7).
+ * Alpha waitlist — Google Apps Script backend (v9).
  *
  * Setup / update:
  *  1. Extensions → Apps Script in the "Alpha waitlist" sheet. Replace all code with this file. Save.
@@ -175,7 +175,7 @@ function confirmPage(first, position, link, ok) {
 function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 
 function sendWelcome(email, first, number, link, token) {
-  var confirmLink = ScriptApp.getService().getUrl() + '?confirm=' + token;
+  var confirmLink = SITE + '/confirm.html?t=' + token;   // a link on our own domain; it forwards to the script
   var html =
     '<div style="background:#050C0A;padding:40px 20px;font-family:Arial,Helvetica,sans-serif">' +
     '<div style="max-width:520px;margin:0 auto;background:#0F1A17;border:1px solid rgba(255,255,255,0.08);border-radius:22px;padding:36px 32px;color:#F7FBF9">' +
