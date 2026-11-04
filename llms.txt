@@ -1,0 +1,44 @@
+# Alpha
+
+> One account. Anywhere on earth.
+
+Alpha is a borderless dollar account for people and businesses, launching in 2027. Escape the banking system. Take full control of your money. Hold the world's strongest currency, the US dollar, and spend it in any country. Protect yourself from inflation. Carry one global card. Earn high returns on your savings.
+
+Company: Alpha Corp, Cayman Islands. Website: https://alpha.com.ky. Contact: hello@alpha.com.ky. Press: press@alpha.com.ky. Support: support@alpha.com.ky. Security: security@alpha.com.ky.
+
+## What makes Alpha different
+
+- Escape the banking system: a bank deposit is a loan you make to the bank, which lends it out, can freeze it, holds it and charges you to move it. Alpha sits outside that system.
+- Full control of your money: your balance sits in your own account under keys only you hold. Alpha has no master key and cannot move, freeze, take or lend what you hold in Spend.
+- Fully reserved US dollars: every balance is held as regulated digital dollars, backed one-to-one by US dollars and short-dated US government debt, redeemable at any time. The ledger proves it holds every dollar it owes, block by block, and anyone can check.
+- Insurance against your own currency: your balance stays in dollars wherever you live, so inflation or devaluation at home does not touch it. It converts to local money only when you spend or send, at a rate you see first.
+- One account for every country on earth: 195 countries, one app, one card.
+- Free, instant payments: between Alpha accounts, any amount, any country, in under a second, free every time.
+- A global card: accepted in 195 countries, in your phone wallet, with freeze, limits and virtual cards.
+- Earn on what you hold: opt in to a floating rate on fully reserved dollars; your money is back within 48 hours.
+- Private by design: every payment is sealed; not even Alpha can read your balance or your payments.
+- Security without passwords: Face ID and a passkey on your own phone approve every payment; there is no password to phish and no reset link. Lose every device and two of your three guardians can restore you after a 72-hour delay.
+- $AG rewards: earned on the card and for referrals; every $AG is valued at US$1 across Alpha and can pay your fees.
+- Business: invoices, team cards, approvals and roles, bulk payouts to a hundred countries from one file, exports and API, key rotation.
+
+## Plans
+
+- Elite Global: free. Premium card, free payments between Alpha accounts, local money in and out at 0.25%, Earn, pots, invoices, $AG rewards.
+- Elite Metal: US$24.99 a month, or hold US$1,000 of $AG instead. Metal card, 0% Alpha fee on local money, higher Earn rate and limits.
+- Business: US$199 a month (up to 5 people). Scale: US$999 a month (up to 25 people, approvals, exports, API, priority support). Enterprise: custom.
+
+## Launch and waitlist
+
+Alpha launches in 2027, country by country, founding members first. The waitlist is open at https://alpha.com.ky: join in 20 seconds, get your place in the queue instantly, move up 50 places for each friend who joins through your link, and earn 25 $AG when you both open an account. The first 10,000 founding members get Elite Metal free for their first year.
+
+## Pages
+
+- Home: https://alpha.com.ky/
+- Questions: https://alpha.com.ky/faq.html
+- Careers: https://alpha.com.ky/careers.html
+- Privacy: https://alpha.com.ky/privacy.html
+- Terms: https://alpha.com.ky/terms.html
+
+## Disclosure
+
+Alpha accounts hold fully reserved digital dollars that you control; they are not bank deposits and are not covered by deposit insurance. Speeds and rates described are design targets for launch and will be published in full in the account terms before launch.
