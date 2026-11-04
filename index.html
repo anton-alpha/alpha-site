@@ -528,6 +528,35 @@ footer a{color:var(--muted);text-decoration:none}
   .chain{height:30px}.chain i{width:30px;height:24px;font-size:8px}.lchain i,.lpend{height:30px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+/* escape */
+#esc-s{padding-block:70px 80px}
+.glow-t{background:var(--glow);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.1em}
+.esc{margin-top:6px;display:grid;gap:10px}
+.eh{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.eh div{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:0 18px 6px;color:var(--muted)}
+.eh div.eha{color:var(--mint-ink)}
+.er{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ec{position:relative;padding:18px 20px 18px 56px;border-radius:18px;background:var(--surface);border:1px solid rgba(255,255,255,.06)}
+.ec b{display:inline-block;position:relative;font-size:16.5px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.ec span{display:block;color:var(--body);font-size:14px;line-height:1.45;margin-top:4px}
+.ec i{position:absolute;left:18px;top:18px;width:24px;height:24px;border-radius:50%;font-style:normal;display:grid;place-items:center;font-size:12px;font-weight:700}
+.bk i{border:1px solid rgba(255,138,128,.55);color:var(--red)}
+.bk b{color:#C7D1CC}.bk span{color:var(--muted)}
+.bk b::after{content:"";position:absolute;left:0;top:56%;height:2px;width:0;background:var(--red);box-shadow:0 0 8px rgba(255,138,128,.6);transition:width .55s cubic-bezier(.2,.8,.2,1)}
+.esc.in .bk b::after{width:100%}
+.esc.in .bk{animation:crumble .9s ease both}
+@keyframes crumble{0%{transform:none}30%{transform:translateX(-2px) rotate(-.25deg)}60%{transform:translateX(2px) rotate(.2deg)}100%{transform:none;opacity:.78}}
+.al{border-color:rgba(31,196,140,.28);background:linear-gradient(180deg,rgba(31,196,140,.12),rgba(31,196,140,.03));opacity:0;transform:translateX(18px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.al i{background:var(--mint);color:#04140E;box-shadow:0 0 14px var(--mint)}
+.esc.in .al{opacity:1;transform:none}
+.er:nth-child(2) .ec{transition-delay:.05s;animation-delay:.05s}.er:nth-child(3) .ec{transition-delay:.25s;animation-delay:.25s}.er:nth-child(4) .ec{transition-delay:.45s;animation-delay:.45s}.er:nth-child(5) .ec{transition-delay:.65s;animation-delay:.65s}
+.ec::before{display:none;content:attr(data-l);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.al::before{color:var(--mint-ink)}
+.escbar{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px 28px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.escbar span b{color:var(--mint);font-weight:600}
+.escbar span::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--mint);margin-right:10px;vertical-align:middle;box-shadow:0 0 8px var(--mint)}
+@media (max-width:760px){#esc-s{padding-block:40px 50px}.eh{display:none}.er{grid-template-columns:1fr;gap:0;background:var(--surface);border:1px solid rgba(255,255,255,.06);border-radius:18px;overflow:hidden}.ec{background:none;border:0;border-radius:0;padding:10px 14px 10px 44px}.ec i{left:13px;top:11px;width:20px;height:20px;font-size:10px}.ec::before{display:inline;margin-right:8px}.bk{border-bottom:1px solid rgba(255,255,255,.06)}.bk b{font-size:13.5px;font-weight:500}.bk span{display:none}.al{padding:12px 14px 13px 44px;background:linear-gradient(180deg,rgba(31,196,140,.1),rgba(31,196,140,.03));transform:none}.al i{top:13px}.al::before{display:none}.al b{font-size:15.5px}.al span{font-size:13.5px}.escbar{gap:8px 18px;font-size:11px}}
 </style>
 </head><body>
 
@@ -609,7 +638,7 @@ footer a{color:var(--muted);text-decoration:none}
    </div>
   </div>
  </section>
- <div class="pulse rv"><div class="track"><span>One dollar account</span><span>A card for every country</span><span>Free between Alpha accounts</span><span>Private, even from Alpha</span><span>Keys only you hold</span></div></div>
+ <div class="pulse rv"><div class="track"><span>Escape the banking system</span><span>A card for every country</span><span>Free between Alpha accounts</span><span>Private, even from Alpha</span><span>Keys only you hold</span></div></div>
 
  <div class="nums">
   <div class="num rv"><i class="ring"></i><b>195</b><span>countries on earth.<br>One account. Anywhere on earth.</span><small>EVERY COUNTRY</small></div>
@@ -622,6 +651,35 @@ footer a{color:var(--muted);text-decoration:none}
 
 
 
+
+
+ <section id="esc-s">
+  <div class="wrap">
+   <span class="eb rv">Why Alpha exists</span>
+   <h2 class="rv">Escape the banking system.<br><span class="glow-t">Sovereign ownership of your own assets.</span></h2>
+   <p class="lede rv d1">A bank account is a loan you make to the bank, on its terms. It lends your money out, freezes it, holds it and charges you to move it. Alpha is a dollar account that sits outside that system entirely: the dollars are yours, under keys only you hold.</p>
+   <div class="esc rv d2" id="esc">
+    <div class="eh"><div>Inside the banking system</div><div class="eha">Inside Alpha</div></div>
+    <div class="er">
+     <div class="ec bk" data-l="Bank"><i>×</i><b>Lent out</b><span>Your deposit becomes their loan book. Most of it isn't there.</span></div>
+     <div class="ec al" data-l="Alpha"><i>✓</i><b>Fully reserved</b><span>Every dollar sits in your account, redeemable one-to-one, any time.</span></div>
+    </div>
+    <div class="er">
+     <div class="ec bk" data-l="Bank"><i>×</i><b>Frozen, held, closed</b><span>At their discretion. "Under review" is the only explanation you get.</span></div>
+     <div class="ec al" data-l="Alpha"><i>✓</i><b>No master key</b><span>Nobody at Alpha can move or freeze what you hold. Only your passkey can.</span></div>
+    </div>
+    <div class="er">
+     <div class="ec bk" data-l="Bank"><i>×</i><b>Days to cross a border</b><span>Correspondent banks, cut-off times, weekends, 3% on the way.</span></div>
+     <div class="ec al" data-l="Alpha"><i>✓</i><b>Under a second, anywhere</b><span>Any country, any hour. Free between Alpha accounts.</span></div>
+    </div>
+    <div class="er">
+     <div class="ec bk" data-l="Bank"><i>×</i><b>Diluted</b><span>Printed by your central bank, paid 0% while they earn on it.</span></div>
+     <div class="ec al" data-l="Alpha"><i>✓</i><b>Held in dollars, earning</b><span>A balance your country can't print. Earn on what you hold.</span></div>
+    </div>
+   </div>
+   <div class="escbar rv d3"><span>Keys: <b>you</b></span><span>Alpha's key to your account: <b>none</b></span><span>Reserved: <b>100%</b></span><span>Dilution: <b>impossible</b></span></div>
+  </div>
+ </section>
 
  <section id="app-s">
   <span class="eb rv">The product</span>
@@ -1115,5 +1173,6 @@ var toast=document.getElementById('toast');function note(m){toast.textContent=m;
 })();
 })();
 </script>
+
 
 </body></html>
