@@ -25,7 +25,7 @@ Company: Alpha Corp, Cayman Islands. Website: https://alpha.com.ky. Contact: hel
 
 - Elite Global: free. Premium card, free payments between Alpha accounts, local money in and out at 0.25%, Earn, pots, invoices, $AG rewards.
 - Platinum Global: US$24.99 a month, or hold US$1,000 of $AG instead. Metal card, 0% Alpha fee on local money, higher Earn rate and limits.
-- Sovereign Global: US$199 a month, or hold US$25,000 of $AG instead. Heavy numbered card engraved to you, 0% Alpha fee on everything, the highest Earn rate and limits, a named person at Alpha any hour, first into every new country.
+- Sovereign Global: US$199 a month, or hold US$25,000 of $AG instead. Heavy numbered card engraved to you, 0% Alpha fee on local money and bank invoices, the highest Earn rate and limits, a named person at Alpha any hour, first into every new country.
 - Business: US$199 a month (up to 5 people). Scale: US$999 a month (up to 25 people, approvals, exports, API, priority support). Enterprise: custom.
 
 ## Launch and waitlist
