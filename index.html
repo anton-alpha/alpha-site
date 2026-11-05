@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="icon.png"><link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap"></noscript>
 <style>
 /* Cinematic dark landing. Sections reveal on scroll. Globe (canvas), privacy reveal (CSS anim), keys (SVG anim), calculator, waitlist queue. Single-theme brand dark. */
 :root{
@@ -56,7 +56,7 @@ header .wm{width:104px;height:21px;display:block}
 /* reveal */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
 .rv.in{opacity:1;transform:none}
-.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}
+.rv.d1{transition-delay:.12s}.hero .rv{transition-duration:.45s}.hero .rv.d1{transition-delay:.05s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}
 
 /* hero */
 .hero{position:relative;isolation:isolate;padding-block:36px 20px;min-height:88vh;display:grid;grid-template-columns:0.95fr 1.15fr;gap:24px;align-items:center}
@@ -568,7 +568,7 @@ footer a{color:var(--muted);text-decoration:none}
 
 
 <canvas id="aur" aria-hidden="true"></canvas>
-<header><div class="wrap"><a href="#top" class="wm" role="img" aria-label="Alpha"></a><nav class="nav" aria-label="Sections"><a href="#app-s">Product</a><a href="#biz-s">Business</a><a href="#sec-s">Security</a><a href="faq.html">FAQ</a><a href="careers.html">Careers</a></nav><span class="spacer"></span><a class="btn sm ghost" href="#login" data-open-login>Log in</a><a class="btn sm" href="#join" data-open-wl>Join the waitlist</a><button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button></div>
+<header><div class="wrap"><a href="#top" class="wm" aria-label="Alpha, home"></a><nav class="nav" aria-label="Sections"><a href="#app-s">Product</a><a href="#biz-s">Business</a><a href="#sec-s">Security</a><a href="faq.html">FAQ</a><a href="careers.html">Careers</a></nav><span class="spacer"></span><a class="btn sm ghost" href="#login" data-open-login>Log in</a><a class="btn sm" href="#join" data-open-wl>Join the waitlist</a><button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button></div>
 <div class="mnav" id="mnav"><a href="#app-s">Product</a><a href="#biz-s">Business</a><a href="#sec-s">Security</a><a href="faq.html">FAQ</a><a href="careers.html">Careers</a><a href="#login" data-open-login>Log in</a><a href="#join" class="hi" data-open-wl>Join the waitlist</a></div></header>
 <div class="wlmodal" id="loginmodal" role="dialog" aria-modal="true" aria-labelledby="lih" hidden>
  <div class="wlcard">
@@ -639,7 +639,7 @@ footer a{color:var(--muted);text-decoration:none}
      <div class="ltrack"><div class="lchain" id="hchain"></div><div class="lpend" id="lpend"><i class="bar"></i><b id="ptx">0</b><small>payments · sealing…</small></div></div>
      <div class="ltape"><div class="tape" id="ltape"></div></div>
     </div>
-    <div class="scene" id="scene"><div class="cardwrap" id="cw"><div class="float"><div class="card" id="card"><img src="card.webp" fetchpriority="high" alt="The Alpha Elite Global Visa card"><div class="back"><div class="stripe"></div><small>4921 0381 5520 4821</small><span class="wm"></span></div><i class="sheen"></i><i class="sweep"></i><i class="imp"></i><i class="edge"></i></div></div></div></div>
+    <div class="scene" id="scene"><div class="cardwrap" id="cw"><div class="float"><div class="card" id="card"><img src="card.webp" srcset="card-500.webp 500w, card.webp 1000w" sizes="(max-width:700px) 80vw, 520px" width="1000" height="618" fetchpriority="high" alt="The Alpha Elite Global Visa card"><div class="back"><div class="stripe"></div><small>4921 0381 5520 4821</small><span class="wm"></span></div><i class="sheen"></i><i class="sweep"></i><i class="imp"></i><i class="edge"></i></div></div></div></div>
     <div class="chip rcv" id="htoast"><i></i><div><b>Received · US$1,200</b><small>From Seoul · 0.8 s · free</small></div></div>
    </div>
   </div>
@@ -700,11 +700,11 @@ footer a{color:var(--muted);text-decoration:none}
    </div>
    <div class="phonewrap rv d2">
     <div class="phone"><div class="screens" id="screens">
-     <img src="app-home.webp" loading="lazy" decoding="async" alt="Alpha app home: total balance in dollars with local equivalent, card, Spend and Earn" class="on" data-s="home">
-     <img src="app-payments.webp" loading="lazy" decoding="async" alt="Alpha app: send money to a contact, free and instant" data-s="payments">
-     <img src="app-card.webp" loading="lazy" decoding="async" alt="Alpha app: the card, its balance and controls" data-s="card">
-     <img src="app-transactions.webp" loading="lazy" decoding="async" alt="Alpha app: every payment in and out, with statements" data-s="transactions">
-     <img src="app-rewards.webp" loading="lazy" decoding="async" alt="Alpha app: $AG rewards balance" data-s="rewards">
+     <img src="app-home.webp" srcset="app-home-300.webp 300w, app-home.webp 590w" sizes="(max-width:700px) 146px, 300px" width="590" height="1278" loading="lazy" decoding="async" alt="Alpha app home: total balance in dollars with local equivalent, card, Spend and Earn" class="on" data-s="home">
+     <img src="app-payments.webp" srcset="app-payments-300.webp 300w, app-payments.webp 590w" sizes="(max-width:700px) 146px, 300px" width="590" height="1278" loading="lazy" decoding="async" alt="Alpha app: send money to a contact, free and instant" data-s="payments">
+     <img src="app-card.webp" srcset="app-card-300.webp 300w, app-card.webp 590w" sizes="(max-width:700px) 146px, 300px" width="590" height="1278" loading="lazy" decoding="async" alt="Alpha app: the card, its balance and controls" data-s="card">
+     <img src="app-transactions.webp" srcset="app-transactions-300.webp 300w, app-transactions.webp 590w" sizes="(max-width:700px) 146px, 300px" width="590" height="1278" loading="lazy" decoding="async" alt="Alpha app: every payment in and out, with statements" data-s="transactions">
+     <img src="app-rewards.webp" srcset="app-rewards-300.webp 300w, app-rewards.webp 590w" sizes="(max-width:700px) 146px, 300px" width="590" height="1278" loading="lazy" decoding="async" alt="Alpha app: $AG rewards balance" data-s="rewards">
     </div></div>
     <div class="phoneglow"></div>
    </div>
@@ -945,7 +945,7 @@ var heroEl=document.querySelector('.hero');if(!RM){addEventListener('scroll',fun
   requestAnimationFrame(draw)})(0)})();
 /* reveal */
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
-document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+document.querySelectorAll('.hero .rv').forEach(function(el){el.classList.add('in')});document.querySelectorAll('.rv:not(.in)').forEach(function(el){io.observe(el)});
 
 /* card: drag to spin, hover sheen */
 var cw=document.getElementById('cw'),c=document.getElementById('card'),rx=10,ry=16,drag=false,lx=0,ly=0,vy=0;
@@ -990,7 +990,7 @@ function endG(){dragG=false;cv.style.cursor='grab'}cv.addEventListener('pointeru
 function size(){var r=cv.getBoundingClientRect();cv.width=r.width*DPR;cv.height=r.height*DPR}size();addEventListener('resize',size);
 function pick(){var i1,i2,tries=0;do{var A=Math.random()<0.7?hubs.length:cities.length;i1=Math.floor(Math.random()*A);i2=Math.floor(Math.random()*(Math.random()<0.6?hubs.length:cities.length));tries++}while(tries<16&&(i1===i2||rot(cities[i1].v,ang)[2]<0.2||rot(cities[i2].v,ang)[2]<0.2));return [i1,i2]}
 var cardArcs=[],nextCard=0;
-function frame(t){if(!visible){last=t;requestAnimationFrame(frame);return}var W=cv.width,H=cv.height,R=W*(o.r||0.41),cx=W*(o.cx||0.5),cy=H*(o.cy||0.5);g.clearRect(0,0,W,H);
+var fc=0;function frame(t){if(!visible){last=t;requestAnimationFrame(frame);return}if(LITE&&(fc++&1)){requestAnimationFrame(frame);return}var W=cv.width,H=cv.height,R=W*(o.r||0.41),cx=W*(o.cx||0.5),cy=H*(o.cy||0.5);g.clearRect(0,0,W,H);
  var dt=Math.min(.05,(t-last)/1000)||0;last=t;
  if(!RM){if(!dragG){idleT+=dt;spinV+=((o.spin||0.12)-spinV)*Math.min(1,dt*(idleT>1.2?0.9:0.25));ang+=dt*spinV}}
  TILT=T0+0.05*Math.sin(t/9000);
@@ -1134,14 +1134,14 @@ var toast=document.getElementById('toast');function note(m){toast.textContent=m;
  try{var loc=(Intl.DateTimeFormat().resolvedOptions().timeZone||'');var guess={'Europe/London':'GB','America/Cayman':'KY','America/Mexico_City':'MX','America/New_York':'US','America/Los_Angeles':'US','Europe/Paris':'FR','Europe/Madrid':'ES','Europe/Berlin':'DE','Asia/Dubai':'AE','Asia/Singapore':'SG','Asia/Tokyo':'JP','Australia/Sydney':'AU','Asia/Hong_Kong':'HK'}[loc];dial.value=guess||'GB'}catch(_){}
  sel.addEventListener('change',function(){var c=nameToCode[sel.value];if(c&&DIAL[c])dial.value=c});
  var ref='';try{ref=new URLSearchParams(location.search).get('r')||''}catch(_){}
- function open(){modal.hidden=false;opened=Date.now();document.body.style.overflow='hidden';setTimeout(function(){document.getElementById('wlname').focus()},50)}
+ function open(){loadCf();modal.hidden=false;opened=Date.now();document.body.style.overflow='hidden';setTimeout(function(){document.getElementById('wlname').focus()},50)}
  function close(){modal.hidden=true;document.body.style.overflow=''}
  document.querySelectorAll('[data-open-wl]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();open()})});
  document.querySelectorAll('#wltype button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#wltype button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');document.getElementById('wlbizrow').hidden=b.dataset.v!=='business'})});
  document.querySelectorAll('#wluse button').forEach(function(b){b.addEventListener('click',function(){b.classList.toggle('on')})});
  document.getElementById('wlclose').addEventListener('click',close);modal.addEventListener('click',function(e){if(e.target===modal)close()});addEventListener('keydown',function(e){if(e.key==='Escape'&&!modal.hidden)close()});
  function fail(m){err.textContent=m;err.classList.add('on');btn.disabled=false;btn.textContent='Reserve my place'}
- if(document.getElementById('wlcf').dataset.sitekey.indexOf('{{')===0)document.getElementById('wlcf').remove();else{var sc=document.createElement('script');sc.src='https://challenges.cloudflare.com/turnstile/v0/api.js';sc.async=true;sc.defer=true;document.head.appendChild(sc)}
+ var cfLoaded=false;function loadCf(){if(cfLoaded)return;cfLoaded=true;if(document.getElementById('wlcf').dataset.sitekey.indexOf('{{')===0){document.getElementById('wlcf').remove();return}var sc=document.createElement('script');sc.src='https://challenges.cloudflare.com/turnstile/v0/api.js';sc.async=true;sc.defer=true;document.head.appendChild(sc)}
  function send(payload,cb){if(!WL_ENDPOINT||WL_ENDPOINT.indexOf('{{')===0){cb({ok:false,error:'The waitlist opens shortly. Please try again later.'});return}
   fetch(WL_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).then(function(r){return r.json()}).then(cb).catch(function(){cb({ok:false,error:'Couldn\'t reach the waitlist. Please try again.'})})}
  form.addEventListener('submit',function(e){e.preventDefault();err.classList.remove('on');
