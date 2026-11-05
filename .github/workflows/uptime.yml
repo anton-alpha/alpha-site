@@ -1,0 +1,61 @@
+name: uptime
+
+# Checks that alpha.com.ky answers, every 10 minutes. Opens one issue when it
+# fails three times in a row, comments on recovery, and closes the issue.
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Probe
+        id: probe
+        shell: bash
+        run: |
+          fails=0
+          for url in https://alpha.com.ky/ https://alpha.com.ky/og.png https://www.alpha.com.ky/; do
+            ok=0
+            for i in 1 2 3; do
+              code=$(curl -sS -o /tmp/body -w '%{http_code}' --max-time 20 -L "$url" || echo 000)
+              if [ "$code" = "200" ]; then ok=1; break; fi
+              sleep 20
+            done
+            if [ "$ok" = "1" ]; then
+              if [ "$url" = "https://alpha.com.ky/" ] && ! grep -q "One account" /tmp/body; then
+                echo "::warning::$url answered 200 but the page content is wrong"; fails=$((fails+1))
+              else
+                echo "$url ok"
+              fi
+            else
+              echo "::error::$url failed three times (last code $code)"; fails=$((fails+1))
+            fi
+          done
+          echo "fails=$fails" >> "$GITHUB_OUTPUT"
+      - name: Open or close the issue
+        uses: actions/github-script@v7
+        env:
+          FAILS: ${{ steps.probe.outputs.fails }}
+        with:
+          script: |
+            const fails = Number(process.env.FAILS || 0);
+            const title = 'Site down: alpha.com.ky is not answering';
+            const { data: open } = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, state: 'open', labels: 'uptime' });
+            const existing = open.find(i => i.title === title);
+            const when = new Date().toISOString();
+            if (fails > 0 && !existing) {
+              await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title, labels: ['uptime'],
+                body: `The uptime check failed at ${when}. See the run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\nThe check retries three times over a minute before reporting, so this is not a blip. First things to look at: GitHub Pages status (https://www.githubstatus.com), the DNS records for alpha.com.ky in Cloudflare, and the CNAME file in this repository.` });
+            } else if (fails === 0 && existing) {
+              await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number, body: `Back up at ${when}.` });
+              await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number, state: 'closed' });
+            }
+            if (fails > 0) core.setFailed('site check failed');
