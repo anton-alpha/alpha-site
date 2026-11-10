@@ -187,6 +187,14 @@ canvas#hglobe{position:absolute;left:0;top:0;width:100%;height:100%}
 .num i.watch::before{content:"";position:absolute;left:50%;top:-5px;width:7px;height:3px;margin-left:-3.5px;border-radius:2px;background:rgba(98,224,176,.75)}
 .num i.watch::after{content:"";position:absolute;left:50%;bottom:50%;width:2px;height:38%;margin-left:-1px;border-radius:2px;background:var(--mint);box-shadow:0 0 8px var(--mint);transform-origin:50% 100%;animation:sweep 2.6s linear infinite}
 @keyframes sweep{0%{transform:rotate(0)}31%,100%{transform:rotate(360deg)}}
+.num i.usdc{width:52px}.num i.usdc svg{width:100%;height:100%;overflow:visible}
+.num i.usdc path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.num i.usdc .g0{stroke:rgba(255,255,255,.12);stroke-width:1}
+.num i.usdc .lo{stroke:rgba(255,255,255,.32);stroke-width:1.5;stroke-dasharray:60;animation:usddraw 3.2s ease-out infinite}
+.num i.usdc .hi{stroke:var(--mint);stroke-width:2;stroke-dasharray:40;filter:drop-shadow(0 0 3px rgba(98,224,176,.8));animation:usddraw 3.2s ease-out infinite}
+.num i.usdc .dt{fill:var(--mint);filter:drop-shadow(0 0 4px var(--mint));animation:usddot 3.2s ease-out infinite}
+@keyframes usddraw{0%{stroke-dashoffset:60;opacity:1}45%,85%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes usddot{0%,40%{opacity:0}50%,85%{opacity:1}100%{opacity:0}}
 @property --pa{syntax:'<percentage>';inherits:false;initial-value:0%}
 .num.in i.arc{--pa:80%}
 @media (max-width:900px){.nums{grid-template-columns:1fr 1fr}}
@@ -303,7 +311,7 @@ h2{font-size:clamp(34px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-hei
  .phonewrap{order:0}.phone{width:146px;border-radius:28px;padding:6px}.phone .screens{border-radius:23px}.phoneglow{display:none}
  .feats{gap:2px}.ft{padding:9px 10px;border-radius:12px}.ft b{font-size:14px}.ft span{display:none}.ft.on span{display:block;font-size:12.5px;line-height:1.35;margin-top:3px;max-height:none;opacity:1}
  .ft.on b::before{width:6px;height:6px;margin-right:7px}
- .nums{grid-template-columns:1fr 1fr;gap:10px;padding-block:20px 40px}.num{padding:16px 14px 14px;border-radius:16px}.num b{font-size:30px;margin:10px 0 6px}.num span{font-size:13px}.num span br{display:none}.num small{margin-top:10px;font-size:10px}.num i{width:26px;height:26px}
+ .nums{grid-template-columns:1fr 1fr;gap:10px;padding-block:20px 40px}.num{padding:16px 14px 14px;border-radius:16px}.num b{font-size:30px;margin:10px 0 6px}.num span{font-size:13px}.num span br{display:none}.num small{margin-top:10px;font-size:10px}.num i{width:26px;height:26px}.num i.usdc{width:40px}
  .tl{gap:10px;margin-top:22px}.tstep{display:grid;grid-template-columns:64px 1fr;gap:4px 14px;padding:14px 16px;align-items:center}.tstep .tv{grid-row:1/4;height:64px;margin:0}.tv svg{width:56px;height:56px}.tv .cnt{display:none}.tv .arr{display:none}.tstep b{font-size:16px;margin:2px 0 4px}.tstep span{font-size:13.5px}
  .stmt .r:nth-child(n+5){display:none}
  .secgrid{gap:10px}.secgrid>div{padding:16px}
@@ -660,7 +668,7 @@ footer a{color:var(--muted);text-decoration:none}
  <div class="nums">
   <div class="num rv"><i class="ring"></i><b>Global</b><span>One account, wherever you live, work or travel.</span><small>COUNTRY BY COUNTRY</small></div>
   <div class="num rv d1"><i class="pay"></i><b>Free</b><span>payments between Alpha accounts.<br>Any amount, any country.</span><small>US$0.00 · ALWAYS</small></div>
-  <div class="num rv d2"><i class="usd"></i><b>US$</b><span>every balance held in dollars.<br>The world's reserve currency.</span><small>RESERVE CURRENCY</small></div>
+  <div class="num rv d2"><i class="usdc" aria-hidden="true"><svg viewBox="0 0 52 34"><path class="g0" d="M2 31H50"/><path class="lo" d="M2 8 L12 11 L21 10 L31 18 L40 22 L49 28"/><path class="hi" d="M2 8 L12 7 L21 8.5 L31 7 L40 8 L49 7.5"/><circle class="dt" cx="49" cy="7.5" r="2.8"/></svg></i><b>US$</b><span>every balance held in dollars.<br>The world's reserve currency.</span><small>RESERVE CURRENCY</small></div>
   <div class="num rv d3"><i class="watch"></i><b data-timer>0.8 s</b><span>for money to arrive.<br>Anywhere on earth, any time.</span><small>UNDER ONE SECOND</small></div>
  </div>
  <div class="scrollcue rv"><i></i>SCROLL</div>
