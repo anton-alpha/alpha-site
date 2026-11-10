@@ -191,6 +191,15 @@ canvas#hglobe{position:absolute;left:0;top:0;width:100%;height:100%}
 .num i.usd2::before{content:"";position:absolute;inset:-1.5px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 62%,rgba(98,224,176,.15) 72%,var(--mint) 100%);-webkit-mask:radial-gradient(circle,transparent 63%,#000 65%);mask:radial-gradient(circle,transparent 63%,#000 65%);animation:rot 2.8s linear infinite}
 .num i.usd2::after{content:"$";position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:16px;background:linear-gradient(110deg,var(--mint) 35%,#e9fff6 50%,var(--mint) 65%) 0 0/250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:usdshine 2.8s ease-in-out infinite}
 @keyframes usdshine{0%,30%{background-position:100% 0}70%,100%{background-position:0 0}}
+.num i.stack{width:34px;height:34px}.num i.stack svg{width:100%;height:100%;overflow:visible}
+.num i.stack .cn path{fill:rgba(98,224,176,.16);stroke:rgba(98,224,176,.75);stroke-width:1.2}
+.num i.stack .cn ellipse{fill:#0f1a16;stroke:var(--mint);stroke-width:1.3}
+.num i.stack .c3 ellipse{fill:rgba(98,224,176,.22);filter:drop-shadow(0 0 4px rgba(98,224,176,.7))}
+.num i.stack .cn{animation:coindrop 3.4s cubic-bezier(.3,1.4,.5,1) infinite;opacity:0}
+.num i.stack .c2{animation-delay:.3s}.num i.stack .c3{animation-delay:.6s}
+.num i.stack text{fill:var(--mint);font:700 7.5px var(--mono);text-anchor:middle;opacity:0;animation:coinsign 3.4s ease-out infinite}
+@keyframes coindrop{0%{transform:translateY(-16px);opacity:0}14%{transform:translateY(0);opacity:1}80%{transform:translateY(0);opacity:1}92%,100%{transform:translateY(0);opacity:0}}
+@keyframes coinsign{0%,32%{opacity:0}42%,80%{opacity:1}92%,100%{opacity:0}}
 @property --pa{syntax:'<percentage>';inherits:false;initial-value:0%}
 .num.in i.arc{--pa:80%}
 @media (max-width:900px){.nums{grid-template-columns:1fr 1fr}}
@@ -663,7 +672,7 @@ footer a{color:var(--muted);text-decoration:none}
  <div class="nums">
   <div class="num rv"><i class="ring"></i><b>Global</b><span>One account, wherever you live, work or travel.</span><small>COUNTRY BY COUNTRY</small></div>
   <div class="num rv d1"><i class="pay"></i><b>Free</b><span>payments between Alpha accounts.<br>Any amount, any country.</span><small>US$0.00 · ALWAYS</small></div>
-  <div class="num rv d2"><i class="usd2"></i><b>US$</b><span>every balance held in dollars.<br>The world's reserve currency.</span><small>RESERVE CURRENCY</small></div>
+  <div class="num rv d2"><i class="stack" aria-hidden="true"><svg viewBox="0 0 34 34"><g class="cn c1"><path d="M5 25 v4 a12 3.6 0 0 0 24 0 v-4"/><ellipse cx="17" cy="25" rx="12" ry="3.6"/></g><g class="cn c2"><path d="M5 19.5 v4 a12 3.6 0 0 0 24 0 v-4"/><ellipse cx="17" cy="19.5" rx="12" ry="3.6"/></g><g class="cn c3"><path d="M5 14 v4 a12 3.6 0 0 0 24 0 v-4"/><ellipse cx="17" cy="14" rx="12" ry="3.6"/></g><text x="17" y="16.4">$</text></svg></i><b>US$</b><span>every balance held in dollars.<br>The world's reserve currency.</span><small>RESERVE CURRENCY</small></div>
   <div class="num rv d3"><i class="watch"></i><b data-timer>0.8 s</b><span>for money to arrive.<br>Anywhere on earth, any time.</span><small>UNDER ONE SECOND</small></div>
  </div>
  <div class="scrollcue rv"><i></i>SCROLL</div>
