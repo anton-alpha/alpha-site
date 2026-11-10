@@ -176,6 +176,17 @@ canvas#hglobe{position:absolute;left:0;top:0;width:100%;height:100%}
 .num i.usd::after{content:"$";position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-weight:600;color:var(--mint);font-size:15px}
 @keyframes breathe{50%{box-shadow:0 0 18px rgba(98,224,176,.45)}}
 .num i.arc{border-radius:50%;background:conic-gradient(var(--mint) var(--pa,0%),rgba(255,255,255,.08) 0);-webkit-mask:radial-gradient(circle,transparent 58%,#000 60%);mask:radial-gradient(circle,transparent 58%,#000 60%);transition:--pa 1.4s ease-out}
+.num i.pay{background:radial-gradient(circle at 3px 50%,rgba(98,224,176,.75) 2.5px,transparent 3px),radial-gradient(circle at calc(100% - 3px) 50%,rgba(98,224,176,.75) 2.5px,transparent 3px),linear-gradient(rgba(98,224,176,.3),rgba(98,224,176,.3)) center/100% 1.5px no-repeat}
+.num i.pay::after{content:"";position:absolute;top:50%;left:0;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px var(--mint);animation:payfly 2.2s cubic-bezier(.5,0,.3,1) infinite}
+@keyframes payfly{0%{left:0;opacity:0}12%{opacity:1}62%{left:calc(100% - 8px);opacity:1}80%,100%{left:calc(100% - 8px);opacity:0}}
+.num i.usd{animation:coin 3.6s ease-in-out infinite,breathe 3s ease-in-out infinite}
+@keyframes coin{0%,62%{transform:rotateY(0)}100%{transform:rotateY(360deg)}}
+.num i.watch{border-radius:50%;border:1.5px solid rgba(98,224,176,.55);background:conic-gradient(rgba(98,224,176,.28) var(--pw,0%),transparent 0);animation:watchfill 2.6s linear infinite}
+@property --pw{syntax:'<percentage>';inherits:false;initial-value:0%}
+@keyframes watchfill{0%{--pw:0%}31%{--pw:100%}85%{--pw:100%;opacity:1}95%{opacity:.4}100%{--pw:0%;opacity:1}}
+.num i.watch::before{content:"";position:absolute;left:50%;top:-5px;width:7px;height:3px;margin-left:-3.5px;border-radius:2px;background:rgba(98,224,176,.75)}
+.num i.watch::after{content:"";position:absolute;left:50%;bottom:50%;width:2px;height:38%;margin-left:-1px;border-radius:2px;background:var(--mint);box-shadow:0 0 8px var(--mint);transform-origin:50% 100%;animation:sweep 2.6s linear infinite}
+@keyframes sweep{0%{transform:rotate(0)}31%,100%{transform:rotate(360deg)}}
 @property --pa{syntax:'<percentage>';inherits:false;initial-value:0%}
 .num.in i.arc{--pa:80%}
 @media (max-width:900px){.nums{grid-template-columns:1fr 1fr}}
@@ -648,9 +659,9 @@ footer a{color:var(--muted);text-decoration:none}
 
  <div class="nums">
   <div class="num rv"><i class="ring"></i><b>Global</b><span>One account, wherever you live, work or travel.</span><small>COUNTRY BY COUNTRY</small></div>
-  <div class="num rv d1"><i class="zero"></i><b>Free</b><span>payments between Alpha accounts.<br>Any amount, any country.</span><small>US$0.00 · ALWAYS</small></div>
+  <div class="num rv d1"><i class="pay"></i><b>Free</b><span>payments between Alpha accounts.<br>Any amount, any country.</span><small>US$0.00 · ALWAYS</small></div>
   <div class="num rv d2"><i class="usd"></i><b>US$</b><span>every balance held in dollars.<br>The world's reserve currency.</span><small>RESERVE CURRENCY</small></div>
-  <div class="num rv d3"><i class="arc"></i><b data-timer>0.8 s</b><span>for money to arrive.<br>Anywhere on earth, any time.</span><small>UNDER ONE SECOND</small></div>
+  <div class="num rv d3"><i class="watch"></i><b data-timer>0.8 s</b><span>for money to arrive.<br>Anywhere on earth, any time.</span><small>UNDER ONE SECOND</small></div>
  </div>
  <div class="scrollcue rv"><i></i>SCROLL</div>
 
