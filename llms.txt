@@ -2,22 +2,22 @@
 
 > One account. Anywhere on earth.
 
-Alpha is a self-custodial dollar account that replaces international banking, for people and businesses, launching in 2027. In one line: a self-custodial, dollar-based alternative to international banking, serving both consumers and businesses. Escape the banking system. Take full control of your money. Hold the world's strongest currency, the US dollar, and spend it in any country. Protect yourself from inflation. Carry one global card.
+Alpha is one dollar account that only you control, for people and businesses. It launches in 2027. Escape the banking system. Take full control of your money. Hold the world's strongest currency, the US dollar, and spend it in any country. Protect yourself from inflation. Carry one global card.
 
-Company: Alpha Corp, Cayman Islands. Website: https://alpha.com.ky. Contact: hello@alpha.com.ky. Press: press@alpha.com.ky. Support: support@alpha.com.ky. Security: security@alpha.com.ky.
+Company: Alpha Corp. Website: https://alpha.com.ky. Contact: hello@alpha.com.ky. Press: press@alpha.com.ky. Support: support@alpha.com.ky. Security: security@alpha.com.ky.
 
 ## What makes Alpha different
 
-- Escape the banking system: a bank deposit is a loan you make to the bank, which lends it out, can freeze it, holds it and charges you to move it. Alpha sits outside that system.
+- Escape the banking system: Banks lend your money out and keep the profit. Freeze it. Hold it for days. Ask what you're buying. Hide fees in the rate. Sell your data. Close you with no reason given. Alpha sits outside that system entirely: the dollars are yours, under keys only you hold.
 - Full control of your money: your balance sits in your own account under keys only you hold. Alpha has no master key and cannot move, freeze, take or lend what you hold in Spend.
 - Fully reserved US dollars: every balance is held as regulated digital dollars, backed one-to-one by US dollars and short-dated US government debt, redeemable at any time. The ledger proves it holds every dollar it owes, block by block, and anyone can check.
 - Insurance against your own currency: your balance stays in dollars wherever you live, so inflation or devaluation at home does not touch it. It converts to local money only when you spend or send, at a rate you see first.
 - One account for every country on earth: 195 countries, one app, one card.
-- Free, instant payments: between Alpha accounts, any amount, any country, in under a second, free every time.
-- A global card: accepted in 195 countries, in your phone wallet, with freeze, limits and virtual cards.
+- Free, instant payments: between Alpha accounts, in any amount, to any country. They arrive in under a second, for free.
+- A global card: accepted in 195 countries, on your phone, with freeze, limits and virtual cards.
 - Private by design: every payment is sealed; not even Alpha can read your balance or your payments.
 - Security without passwords: Face ID and a passkey on your own phone approve every payment; there is no password to phish and no reset link. Lose every device and two of your three guardians can restore you after a 72-hour delay.
-- $AG rewards: coming, and not on at launch. When someone you refer becomes a verified Alpha customer, 25 $AG is recorded as owed to you. The limit is 40 people a year.
+- $AG rewards: not on at launch. When someone you refer becomes a verified Alpha customer, 25 $AG is recorded as owed to you. The limit is 40 people a year.
 - Business: invoices, team cards, approvals and roles, bulk payouts to a hundred countries from one file, exports and API, key rotation.
 
 ## Plans
