@@ -12,9 +12,9 @@ Company: Alpha Corp. Website: https://alpha.com.ky. Contact: hello@alpha.com.ky.
 - Full control of your money: your balance sits in your own account under keys only you hold. Alpha has no master key and cannot move, freeze, take or lend what you hold in Spend.
 - Fully reserved US dollars: every balance is held as regulated digital dollars, backed one-to-one by US dollars and short-dated US government debt, redeemable at any time. The ledger proves it holds every dollar it owes, block by block, and anyone can check.
 - Insurance against your own currency: your balance stays in dollars wherever you live, so inflation or devaluation at home does not touch it. It converts to local money only when you spend or send, at a rate you see first.
-- One account for every country on earth: 195 countries, one app, one card.
+- One account for every country on earth: one app, one card.
 - Free, instant payments: between Alpha accounts, in any amount, to any country. They arrive in under a second, for free.
-- A global card: accepted in 195 countries, on your phone, with freeze, limits and virtual cards.
+- A global card: it works globally, subject to local rules, on your phone, with freeze, limits and virtual cards.
 - Private by design: every payment is sealed; not even Alpha can read your balance or your payments.
 - Security without passwords: Face ID and a passkey on your own phone approve every payment; there is no password to phish and no reset link. Lose every device and two of your three guardians can restore you after a 72-hour delay.
 - $AG rewards: not on at launch. When someone you refer becomes a verified Alpha customer, 25 $AG is recorded as owed to you. The limit is 40 people a year.
