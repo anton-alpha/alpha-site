@@ -169,7 +169,7 @@ function confirmPage(first, position, link, ok) {
     '.n{font-size:56px;font-weight:700;letter-spacing:-2px;line-height:1;color:#5FE3B3;margin:6px 0 18px}code{display:block;background:rgba(0,0,0,.3);border-radius:12px;padding:12px 14px;font-size:13px;color:#fff;word-break:break-all;margin-bottom:14px}' +
     '.s{color:#8FA59C;font-size:13px}a{color:#5FE3B3;text-decoration:none}.f{margin-top:16px;font-size:11px;color:#5F7A6F;text-align:center;max-width:480px}</style></head><body><div>' +
     '<div class="c"><img class="wm" src="' + SITE + '/wordmark.png" alt="ALPHA">' + body + '</div>' +
-    '<div class="f">One account. Anywhere on earth. · Alpha Corp · Cayman Islands<br>Alpha will never ask you for a password or a code by email.</div></div></body></html>';
+    '<div class="f">One account. Anywhere on earth. · Alpha Corp<br>Alpha does not ask for a password or a code by email.</div></div></body></html>';
   return HtmlService.createHtmlOutput(html).setTitle('Alpha').addMetaTag('viewport', 'width=device-width, initial-scale=1');
 }
 function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
@@ -188,12 +188,12 @@ function sendWelcome(email, first, number, link, token) {
     '<p style="margin:0 0 6px;font-size:13px;color:#8FA59C">Your invite link</p><p style="margin:0 0 22px;font-size:13px;color:#F7FBF9;word-break:break-all">' + link + '</p>' +
     '<p style="margin:0;font-size:13px;line-height:1.5;color:#8FA59C">We\'ll email you once, when it\'s your turn. If you didn\'t join the Alpha waitlist, ignore this email.</p>' +
     '</div>' +
-    '<p style="max-width:520px;margin:18px auto 0;font-size:11px;line-height:1.5;color:#5F7A6F;text-align:center">One account. Anywhere on earth. · Alpha Corp · Cayman Islands · <a href="' + SITE + '" style="color:#5FE3B3;text-decoration:none">alpha.com.ky</a><br>Alpha will never ask you for a password or a code by email.</p>' +
+    '<p style="max-width:520px;margin:18px auto 0;font-size:11px;line-height:1.5;color:#5F7A6F;text-align:center">One account. Anywhere on earth. · Alpha Corp · <a href="' + SITE + '" style="color:#5FE3B3;text-decoration:none">alpha.com.ky</a><br>Alpha does not ask for a password or a code by email.</p>' +
     '</div>';
   var opts = { htmlBody: html, name: FROM_NAME, replyTo: REPLY_TO };
   try {
     if (GmailApp.getAliases().indexOf(REPLY_TO) >= 0) opts.from = REPLY_TO;
-    GmailApp.sendEmail(email, 'Welcome to Alpha, ' + first, 'Hi ' + first + ',\n\nYou are on the Alpha waitlist. Your place: #' + number.toLocaleString('en-US') + '.\n\nConfirm your email: ' + confirmLink + '\n\nYour invite link: ' + link + '\nEach friend who joins through it moves you up 50 places. When someone you refer becomes a verified Alpha customer, 25 $AG is recorded as owed to you. The limit is 40 people a year.\n\nWe will email you once, when it is your turn.\n\nAlpha Corp, Cayman Islands. Alpha will never ask you for a password or a code by email.', opts);
+    GmailApp.sendEmail(email, 'Welcome to Alpha, ' + first, 'Hi ' + first + ',\n\nYou are on the Alpha waitlist. Your place: #' + number.toLocaleString('en-US') + '.\n\nConfirm your email: ' + confirmLink + '\n\nYour invite link: ' + link + '\nEach friend who joins through it moves you up 50 places. When someone you refer becomes a verified Alpha customer, 25 $AG is recorded as owed to you. The limit is 40 people a year.\n\nWe will email you once, when it is your turn.\n\nAlpha Corp. Alpha does not ask for a password or a code by email.', opts);
   } catch (e) {
     MailApp.sendEmail({ to: email, subject: 'Welcome to Alpha, ' + first, htmlBody: html, name: FROM_NAME, replyTo: REPLY_TO });
   }
