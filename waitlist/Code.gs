@@ -159,7 +159,7 @@ function doGet(e) {
 function confirmPage(first, position, link, ok) {
   var body = ok
     ? '<div class="k">EMAIL CONFIRMED</div><h1>Thank you, ' + esc(first) + '.</h1><p>Your place on the Alpha waitlist is reserved.</p><div class="n">#' + position.toLocaleString('en-US') + '</div>' +
-      '<p>Each friend who joins through your invite link moves you up 50 places and earns you 25 $AG when you both open an account.</p>' +
+      '<p>Each friend who joins through your invite link moves you up 50 places. When someone you refer becomes a verified Alpha customer, 25 $AG is recorded as owed to you. The limit is 40 people a year.</p>' +
       '<code>' + esc(link) + '</code><p class="s">We\'ll email you once, when it\'s your turn. You can close this page.</p>'
     : '<div class="k">LINK EXPIRED</div><h1>That link no longer works.</h1><p>Your place is safe; this link has simply been used or has expired. If you need anything, write to <a href="mailto:hello@alpha.com.ky">hello@alpha.com.ky</a>.</p>';
   var html = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Alpha</title>' +
@@ -183,7 +183,7 @@ function sendWelcome(email, first, number, link, token) {
     '<h1 style="margin:0 0 6px;font-size:26px;letter-spacing:-0.5px;color:#F7FBF9">You\'re in, ' + first + '.</h1>' +
     '<p style="margin:0 0 22px;font-size:15px;line-height:1.55;color:#CFE6DC">Your place in the queue:</p>' +
     '<p style="margin:0 0 22px;font-size:54px;line-height:1;font-weight:bold;letter-spacing:-2px;color:#5FE3B3">#' + number.toLocaleString('en-US') + '</p>' +
-    '<p style="margin:0 0 10px;font-size:15px;line-height:1.55;color:#CFE6DC">Founding members get in first, country by country. Every friend who joins through your link moves you up 50 places and earns you 25 $AG when you both open an account.</p>' +
+    '<p style="margin:0 0 10px;font-size:15px;line-height:1.55;color:#CFE6DC">Founding members get in first, country by country. Every friend who joins through your link moves you up 50 places. When someone you refer becomes a verified Alpha customer, 25 $AG is recorded as owed to you. The limit is 40 people a year.</p>' +
     '<p style="margin:0 0 26px"><a href="' + confirmLink + '" style="background:#1FC48C;color:#04140E;text-decoration:none;font-weight:bold;font-size:15px;padding:15px 26px;border-radius:999px;display:inline-block">Confirm my email</a></p>' +
     '<p style="margin:0 0 6px;font-size:13px;color:#8FA59C">Your invite link</p><p style="margin:0 0 22px;font-size:13px;color:#F7FBF9;word-break:break-all">' + link + '</p>' +
     '<p style="margin:0;font-size:13px;line-height:1.5;color:#8FA59C">We\'ll email you once, when it\'s your turn. If you didn\'t join the Alpha waitlist, ignore this email.</p>' +
@@ -193,7 +193,7 @@ function sendWelcome(email, first, number, link, token) {
   var opts = { htmlBody: html, name: FROM_NAME, replyTo: REPLY_TO };
   try {
     if (GmailApp.getAliases().indexOf(REPLY_TO) >= 0) opts.from = REPLY_TO;
-    GmailApp.sendEmail(email, 'Welcome to Alpha, ' + first, 'Hi ' + first + ',\n\nYou are on the Alpha waitlist. Your place: #' + number.toLocaleString('en-US') + '.\n\nConfirm your email: ' + confirmLink + '\n\nYour invite link: ' + link + '\nEach friend who joins through it moves you up 50 places and earns you 25 $AG when you both open an account.\n\nWe will email you once, when it is your turn.\n\nAlpha Corp, Cayman Islands. Alpha will never ask you for a password or a code by email.', opts);
+    GmailApp.sendEmail(email, 'Welcome to Alpha, ' + first, 'Hi ' + first + ',\n\nYou are on the Alpha waitlist. Your place: #' + number.toLocaleString('en-US') + '.\n\nConfirm your email: ' + confirmLink + '\n\nYour invite link: ' + link + '\nEach friend who joins through it moves you up 50 places. When someone you refer becomes a verified Alpha customer, 25 $AG is recorded as owed to you. The limit is 40 people a year.\n\nWe will email you once, when it is your turn.\n\nAlpha Corp, Cayman Islands. Alpha will never ask you for a password or a code by email.', opts);
   } catch (e) {
     MailApp.sendEmail({ to: email, subject: 'Welcome to Alpha, ' + first, htmlBody: html, name: FROM_NAME, replyTo: REPLY_TO });
   }
