@@ -39,6 +39,10 @@ Alpha launches in 2027, country by country, founding members first. The waitlist
 - Privacy: https://alpha.com.ky/privacy.html
 - Terms: https://alpha.com.ky/terms.html
 
+## Is my money safe without deposit insurance?
+
+Deposit insurance exists because banks lend out most of your money. Alpha doesn't. Every dollar sits in your own account, backed one-to-one by US dollars and short-dated US government debt, and the ledger proves every second that what it holds equals what it owes. Only you can move it, and you can take it out at any time. The one risk that remains is the issuer of the digital dollar, which is why we use regulated issuers that publish their reserves every month.
+
 ## Disclosure
 
-Alpha accounts hold fully reserved digital dollars that you control; they are not bank deposits and are not covered by deposit insurance. Speeds and rates described are design targets for launch and will be published in full in the account terms before launch.
+Every Alpha balance is held in regulated digital dollars, backed one-to-one by US dollars and short-dated US government debt, and anyone can check the reserves at any time. Alpha is not a bank, so your balance is never lent out. It is not a bank deposit and is not covered by government deposit insurance. Speeds and rates described are design targets for launch and will be published in full in the account terms before launch.
