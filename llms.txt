@@ -34,12 +34,15 @@ Alpha launches in 2027, country by country, founding members first. The waitlist
 ## Pages
 
 - Home: https://alpha.com.ky/
+- Security and trust: https://alpha.com.ky/security.html
 - Questions: https://alpha.com.ky/faq.html
 - Careers: https://alpha.com.ky/careers.html
 - Privacy: https://alpha.com.ky/privacy.html
 - Terms: https://alpha.com.ky/terms.html
 
 ## How safe is Alpha?
+
+Full detail: https://alpha.com.ky/security.html
 
 - Fully reserved: every balance is held in regulated digital dollars, backed one-to-one by US dollars and short-dated US government debt.
 - Nothing is lent out: Alpha takes no deposits and makes no loans with customers' money, so a bank run cannot happen. Every customer could withdraw everything on the same day.
@@ -56,10 +59,22 @@ No. A bank run happens because a bank lends out most of what you deposit, so it 
 
 It stays yours. Alpha never holds your money, so it is not part of Alpha's assets and creditors cannot claim it. Your keys still open your account, and a free exit tool, which runs without Alpha, lets you move every dollar out.
 
+## Where does Earn's return come from?
+
+Earn is not part of the launch. When it is switched on, its return comes from the interest on the US government debt behind the digital dollar, shared with you by the issuer. Alpha does not lend your money to produce it.
+
+## Can I be locked out of my money?
+
+Not while any two of your three guardians are available: your backup key, a person you trust, and Alpha. Lose every device and any two of them can let you back in after a 72-hour delay you can stop from any device. Alpha alone can never get in.
+
+## What if there is a bug in Alpha's code?
+
+The rules that hold your money are independently audited before launch, open to a public bug bounty, and cannot be changed by anyone once live. If a problem is found, Alpha can pause new activity at once. A pause never touches your balance, and the exit tool still works. Fixes arrive as new, audited versions.
+
 ## Is my money safe without deposit insurance?
 
 Deposit insurance exists because banks lend out most of your money. Alpha doesn't. Every dollar sits in your own account, backed one-to-one by US dollars and short-dated US government debt, and the ledger proves every second that what it holds equals what it owes. Only you can move it, and you can take it out at any time. The one risk that remains is the issuer of the digital dollar, which is why we use regulated issuers that publish their reserves every month.
 
 ## Disclosure
 
-Every Alpha balance is held in regulated digital dollars, backed one-to-one by US dollars and short-dated US government debt, and anyone can check the reserves at any time. Alpha is not a bank, so your balance is never lent out. It is not a bank deposit and is not covered by government deposit insurance. Speeds and rates described are design targets for launch and will be published in full in the account terms before launch.
+Every Alpha balance is held in regulated digital dollars, backed one-to-one by US dollars and short-dated US government debt, and anyone can check the reserves at any time. Alpha is not a bank, so your balance is never lent out. It is not a bank deposit and is not covered by government deposit insurance. Prices and speeds are confirmed in the account terms at launch.
