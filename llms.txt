@@ -39,6 +39,23 @@ Alpha launches in 2027, country by country, founding members first. The waitlist
 - Privacy: https://alpha.com.ky/privacy.html
 - Terms: https://alpha.com.ky/terms.html
 
+## How safe is Alpha?
+
+- Fully reserved: every balance is held in regulated digital dollars, backed one-to-one by US dollars and short-dated US government debt.
+- Nothing is lent out: Alpha takes no deposits and makes no loans with customers' money, so a bank run cannot happen. Every customer could withdraw everything on the same day.
+- Provable at any time: the ledger proves every second that what it holds equals what it owes, and anyone can check.
+- Customer-controlled: only the customer's own keys can move their balance. Alpha has no master key and cannot freeze, move or lend it.
+- Survives Alpha: customers' money is not Alpha's asset, so Alpha's creditors cannot claim it, and a free exit tool lets customers move every dollar out without Alpha.
+- The remaining risk is the issuer of the digital dollar, which is why Alpha uses regulated issuers that publish their reserves every month. Balances are not bank deposits and are not covered by government deposit insurance.
+
+## Can there be a bank run on Alpha?
+
+No. A bank run happens because a bank lends out most of what you deposit, so it cannot pay everyone back at once. That is what brought down Silicon Valley Bank in 2023. Alpha lends out nothing. Every dollar stays in its owner's account, backed one-to-one, so every customer could take everything out on the same day and every dollar would be there. Anyone can check this at any time: the ledger proves that what it holds equals what it owes.
+
+## What happens to my money if Alpha shuts down?
+
+It stays yours. Alpha never holds your money, so it is not part of Alpha's assets and creditors cannot claim it. Your keys still open your account, and a free exit tool, which runs without Alpha, lets you move every dollar out.
+
 ## Is my money safe without deposit insurance?
 
 Deposit insurance exists because banks lend out most of your money. Alpha doesn't. Every dollar sits in your own account, backed one-to-one by US dollars and short-dated US government debt, and the ledger proves every second that what it holds equals what it owes. Only you can move it, and you can take it out at any time. The one risk that remains is the issuer of the digital dollar, which is why we use regulated issuers that publish their reserves every month.
